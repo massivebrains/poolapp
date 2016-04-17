@@ -1,15 +1,16 @@
-<?php include 'head.php'; ?>
+
+<?php $this->load->view('includes/head') ?>
 <body class="fixed-header dashboard">
-	<?php include 'admin-nav.php' ?>
+<?php $this->load->view('admin/admin-nav') ?>
 	<div class="page-container ">
-		<?php include 'admin-header.php' ?>
+		<?php $this->load->view('admin/admin-header') ?>
 		<div class="page-content-wrapper ">
 			<div class="content sm-gutter">
 				<div class="container-fluid padding-25 sm-padding-10">
-					<?php include 'admin-index-content.php' ?>
+					<?php $this->load->view('admin/admin-index-content') ?>
 				</div>
 			</div>
-			<?php include 'footer-note.php' ?>
+			<?php $this->load->view('includes/footer-note') ?>
 		</div>
 	</div>
-	<?php include 'footer.php' ?>
+	<?php $this->load->view('includes/footer') ?>

@@ -30,4 +30,6 @@
 	<link class="main-stylesheet" href="<?php echo base_url() ?>assets/pages/css/pages.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url() ?>assets/assets/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/assets/plugins/toastr/toastr.min.css">
+	<script src="<?php echo base_url() ?>assets/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url() ?>assets/assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
 </head>

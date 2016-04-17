@@ -1,7 +1,7 @@
 <nav class="page-sidebar" data-pages="sidebar">
 
     <div class="sidebar-header">
-        <img src="assets/img/logo_white.png" alt="logo" class="brand" data-src="assets/img/logo_white.png" data-src-retina="assets/img/logo_white_2x.png" width="78" height="22">
+        <img src="<?php echo base_url() ?>assets/assets/img/logo_white.png" alt="logo" class="brand" data-src="<?php echo base_url() ?>assets/assets/img/logo_white.png" data-src-retina="<?php echo base_url() ?>assets/assets/img/logo_white_2x.png" width="78" height="22">
         <div class="sidebar-header-controls">
 
             <button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
@@ -21,23 +21,20 @@
                 <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
             </li>
             <li class="">
-                <a href="admin-branch.php" class="detailed">
+                <a href="<?php echo site_url('admin/branch/read') ?>" class="detailed">
                     <span class="title">Branches</span>
-                    <span class="details">Count: 12345</span>
                 </a>
                 <span class="icon-thumbnail">BR</span>
             </li>
             <li class="">
                 <a href="admin-agent.php" class="detailed">
                     <span class="title">Agents</span>
-                    <span class="details">Count: 12345</span>
                 </a>
                 <span class="icon-thumbnail">AG</span>
             </li>
             <li class="">
                 <a href="admin-onlineusers.php" class="detailed">
                     <span class="title">Online Users</span>
-                    <span class="details">Count: 12345</span>
                 </a>
                 <span class="icon-thumbnail">OU</span>
             </li>

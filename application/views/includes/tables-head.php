@@ -33,5 +33,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/assets/plugins/toastr/toastr.min.css">
 <!--[if lte IE 9]>
 	<link href="<?php echo base_url() ?>assets/assets/plugins/codrops-dialogFx/dialog.ie.css" rel="stylesheet" type="text/css" media="screen" />
-	<![endif]-->
+	<![endif]--> 
+<script src="<?php echo base_url() ?>assets/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url() ?>assets/assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
 </head>

@@ -16,7 +16,7 @@
 		<div class="pull-center hidden-md hidden-lg">
 			<div class="header-inner">
 				<div class="brand inline">
-					<img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="78" height="22">
+					<img src="<?php echo base_url() ?>assets/assets/img/logo.png" alt="logo" data-src="<?php echo base_url() ?>assets/assets/img/logo.png" data-src-retina="<?php echo base_url() ?>assets/assets/img/logo_2x.png" width="78" height="22">
 				</div>
 			</div>
 		</div>
@@ -27,7 +27,7 @@
 	<div class=" pull-left sm-table hidden-xs hidden-sm">
 		<div class="header-inner">
 			<div class="brand inline">
-				<img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="78" height="22">
+				<img src="assets/img/logo.png" alt="logo" data-src="<?php echo base_url() ?>assets/assets/img/logo.png" data-src-retina="<?php echo base_url() ?>assets/assets/img/logo_2x.png" width="78" height="22">
 			</div>
 
 			<ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
@@ -61,7 +61,7 @@
 			<div class="dropdown pull-right">
 				<button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<span class="thumbnail-wrapper d32 circular inline m-t-5">
-						<img src="assets/img/profiles/avatar.jpg" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="32" height="32">
+						<img src="<?php echo base_url() ?>assets/assets/img/profiles/avatar.jpg" alt="" data-src="<?php echo base_url() ?>assets/assets/img/profiles/avatar.jpg" data-src-retina="<?php echo base_url() ?>assets/assets/img/profiles/avatar_small2x.jpg" width="32" height="32">
 					</span>
 				</button>
 				<ul class="dropdown-menu profile-dropdown" role="menu">

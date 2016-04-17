@@ -1,11 +1,11 @@
-<?php include 'tables-head.php' ?>
+<?php $this->load->view('includes/tables-head'); ?>
 <body class="fixed-header ">
-	<?php include 'admin-nav.php' ?>
+	<?php $this->load->view('admin/admin-nav') ?>
 
 
 	<div class="page-container ">
 
-		<?php include 'admin-header.php' ?>
+		<?php $this->load->view('admin/admin-header') ?>
 
 
 		<div class="page-content-wrapper ">
@@ -28,9 +28,9 @@
 
 				<div class="container-fluid container-fixed-lg">
 
-
 					<div class="panel">
-
+						<?php echo validation_errors(); ?>
+						<?php echo $this->session->flashdata('message'); ?>
 						<ul class="nav nav-tabs nav-tabs-linetriangle" data-init-reponsive-tabs="dropdownfx">
 							<li class="active">
 								<a data-toggle="tab" href="#branches"><span>Branches</span></a>
@@ -52,27 +52,50 @@
 											<table class="table " id="dataTable">
 												<thead>
 													<tr>
+														<td>S/NO</td>
 														<td>BRANCH NAME</td>
-														<td>ODD TYPE</td>
 														<td>ACTION</td>
 													</tr>
 
 												</thead>
 												<tbody>
-													<?php for($i = 0; $i<=10; $i++){ ?>
-													<tr>
-														<td>LAGOS</td>
-														<td>DEFAULT</td>
-														<td>
-															<a class="btn btn-danger btn-sm ">
-																<i class="fs-14 pg-close"></i> 
-																<span class="bold">Suspend</span>
-															</a>
-														</td>
-													</tr>
-													<?php } ?>										
+												<?php $count = 1; ?>
+													<?php if(!empty($branches)): ?>
+														<?php foreach($branches as $row): ?>
+															<tr>
+																<td><?=$count++; ?></td>
+																<td><?=$row->branch_name; ?></td>
+																<td>
+																	<button href="" class="btn btn-danger btn-sm" id="<?=$row->branch_id ?>" onclick="suspend(<?php echo $row->branch_id ?>)">
+																		<i class="fs-14 pg-close"></i> 
+																		<span class="bold">Suspend</span>
+																	</button>
+																</td>
+															</tr>
+														<?php endforeach; ?>
+													<?php endif; ?>										
 												</tbody>
 											</table>
+											<script>
+													function suspend(id){
+														if(confirm('Are you sure you want to suspend all agents from this branch?'))
+														{
+															var site_url = '<?php echo site_url() ?>';
+															$.post(site_url+'/admin/branch/suspend', {branch_id:id}, function(data)
+															{
+																if(data == 1)
+																{
+																	alert('All agents from this branch are successfully suspended');
+																	$('#'+id).prop('disabled', true);
+																}
+																else
+																{
+																	console.log(data);
+																}
+															});
+														}
+													}
+											</script>
 										</div>
 
 									</div>
@@ -84,11 +107,11 @@
 									<div class="col-md-3"></div>
 									<div class="col-md-6">
 										
-										<form role="form">
+										<form role="form" action="<?php echo site_url('admin/branch/create') ?>" method="post">
 											<div class="form-group">
 												<label>Branch Name</label>
 												<span class="help">e.g. Lagos</span>
-												<input type="text" name="branch-name" class="form-control" required>
+												<input type="text" name="branch_name" class="form-control" required>
 											</div>
 
 											<div class="form-group">
@@ -110,10 +133,10 @@
 
 			</div>
 
-			<?php include 'footer-note.php' ?>
+			<?php $this->load->view('includes/footer-note') ?>
 
 		</div>
 
 	</div>
 
-	<?php include 'tables-footer.php' ?>
+	<?php $this->load->view('includes/tables-footer') ?>

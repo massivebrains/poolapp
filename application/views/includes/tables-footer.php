@@ -1,6 +1,3 @@
- 
-<script src="<?php echo base_url() ?>assets/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url() ?>assets/assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url() ?>assets/assets/plugins/modernizr.custom.js" type="text/javascript"></script>
 <script src="<?php echo base_url() ?>assets/assets/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url() ?>assets/assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
