@@ -18,7 +18,7 @@
 
 							<ul class="breadcrumb">
 								<li><p>Dashboard</p></li>
-								<li><a href="#" class="active">Branches</a></li>
+								<li><a href="#" class="active">Admins</a></li>
 							</ul>
 
 						</div>
@@ -33,7 +33,7 @@
 						<?php echo $this->session->flashdata('message'); ?>
 						<ul class="nav nav-tabs nav-tabs-linetriangle" data-init-reponsive-tabs="dropdownfx">
 							<li class="active">
-								<a data-toggle="tab" href="#branches"><span>Branches</span></a>
+								<a data-toggle="tab" href="#branches"><span>Admins</span></a>
 							</li>
 							<li>
 								<a data-toggle="tab" href="#add"><span>Add New</span></a>
@@ -49,24 +49,28 @@
 											
 											<div class="clearfix"></div>
 
-											<table class="table " id="dataTable">
+											<table class="table table-bordered" id="dataTable">
 												<thead>
 													<tr>
 														<td>S/NO</td>
-														<td>BRANCH NAME</td>
+														<td>ADMIN NAME</td>
+														<td>ADMIN PHONE</td>
+														<td>ADMIN EMAIL</td>
 														<td>ACTION</td>
 													</tr>
 
 												</thead>
 												<tbody>
 												<?php $count = 1; ?>
-													<?php if(!empty($branches)): ?>
-														<?php foreach($branches as $row): ?>
+													<?php if(!empty($admins)): ?>
+														<?php foreach($admins as $row): ?>
 															<tr>
 																<td><?=$count++; ?></td>
-																<td><?=$row->branch_name; ?></td>
+																<td><?=$row->admin_name; ?></td>
+																<td><?=$row->admin_phone; ?></td>
+																<td><?=$row->admin_email; ?></td>
 																<td>
-																	<button href="" class="btn btn-danger btn-sm" id="<?=$row->branch_id ?>" onclick="suspend(<?php echo $row->branch_id ?>)">
+																	<button href="" class="btn btn-danger btn-sm" id="<?=$row->branch_id ?>" onclick="suspend(<?=$row->admin_id ?>)">
 																		<i class="fs-14 pg-close"></i> 
 																		<span class="bold">Suspend</span>
 																	</button>
@@ -78,10 +82,10 @@
 											</table>
 											<script>
 													function suspend(id){
-														if(confirm('Are you sure you want to suspend all agents from this branch?'))
+														if(confirm('Are you sure you want to suspend this admin?'))
 														{
 															var site_url = '<?php echo site_url() ?>';
-															$.post(site_url+'/admin/branch/suspend', {branch_id:id}, function(data)
+															/*$.post(site_url+'/admin/branch/suspend', {branch_id:id}, function(data)
 															{
 																if(data == 1)
 																{
@@ -92,7 +96,7 @@
 																{
 																	console.log(data);
 																}
-															});
+															});*/
 														}
 													}
 											</script>
@@ -107,14 +111,39 @@
 									<div class="col-md-3"></div>
 									<div class="col-md-6">
 										
-										<form role="form" action="<?php echo site_url('admin/branch/create') ?>" method="post">
+										<form role="form" action="<?php echo site_url('admin/admin/create') ?>" method="post">
 											<div class="form-group">
-												<label>Branch Name</label>
-												<span class="help">e.g. Lagos</span>
-												<input type="text" name="branch_name" class="form-control" required />
-												<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+												<label>Admin Name</label>
+												<span class="help">e.g. John Doe</span>
+												<input type="text" name="admin_name" class="form-control" required />
 											</div>
 
+											<div class="form-group">
+												<label>Admin Phone</label>
+												<span class="help">e.g. 08000000000</span>
+												<input type="text" name="admin_phone" class="form-control" required />
+											</div>
+
+											<div class="form-group">
+												<label>Admin Email</label>
+												<span class="help">e.g. johndoe@domain.com</span>
+												<input type="email" name="admin_email" class="form-control" required />
+											</div>
+
+											<div class="form-group">
+												<label>Admin Password</label>
+												<input type="password" name="admin_password" class="form-control" required />
+											</div>
+
+											<div class="form-group">
+												<label>Retype Password</label>
+												<input type="password" name="admin_password2" class="form-control" required />
+											</div>
+											<?php  $csrf = array(
+												'name' => $this->security->get_csrf_token_name(),
+												'hash' => $this->security->get_csrf_hash());
+											 ?>
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 											<div class="form-group">
 												<input type="submit" name="submit" value="Submit" class="btn btn-primary">
 											</div>

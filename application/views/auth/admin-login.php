@@ -14,7 +14,7 @@
         <p class="small">
           <a href="admin-index.php" title="login">Create </a>an account today or <a href="index.php" title="">Login</a> 
           if you already have an account with us.<br>
-          © 2013-<?php echo date('Y') ?> TACTIC. <a href="admin-index.php" title="">Go to Admin here (demo)</a>
+          © 2013-<?php echo date('Y') ?> TACTIC.
         </p>
       </div>
 
@@ -24,24 +24,21 @@
     <div class="login-container bg-white">
       <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
         <img src="<?php echo base_url() ?>assets/assets/img/logo.png" alt="logo" data-src="<?php echo base_url() ?>assets/assets/img/logo.png" data-src-retina="<?php echo base_url() ?>assets/assets/img/logo_2x.png" width="78" height="22">
-        <p class="p-t-35">Sign into your tactic agent account</p>
-        <?php if($message): ?>
-        <div class="alert alert-danger">
-          <?php echo $message; ?>
-        </div>
-      <?php endif; ?>
-        <form id="form-login" class="p-t-15" role="form" action="<?php echo site_url('auth/login') ?>" method="post">
+        <p class="p-t-35">Sign into your tactic admin account</p>
+          <?php echo validation_errors(); ?>
+          <?php echo $this->session->flashdata('message'); ?>
+        <form id="form-login" class="p-t-15" role="form" action="<?php echo site_url('auth/admin_login') ?>" method="post">
 
           <div class="form-group form-group-default">
-            <label><?php echo lang('login_identity_label', 'identity') ?></label>
+            <label>Phone</label>
             <div class="controls">
-              <input type="email" name="identity" placeholder="email/phone" class="form-control" required>
+              <input type="text" name="admin_phone" placeholder="phone" class="form-control" required>
             </div>
           </div>
 
 
           <div class="form-group form-group-default">
-            <label><?php echo lang('login_password_label', 'password') ?></label>
+            <label>Password</label>
             <div class="controls">
               <input type="password" class="form-control" name="password" placeholder="Password" required>
             </div>
@@ -50,7 +47,7 @@
           <div class="row">
             <div class="col-md-6 no-padding">
               <div class="checkbox ">
-                <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
+                <input type="checkbox" value="1" id="checkbox1">
                 <label for="checkbox1">Keep Me Signed in</label>
               </div>
             </div>
@@ -66,7 +63,7 @@
           <div class="m-b-30 p-r-80 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix">
             
             <div class="col-sm-9 no-padding m-t-10">
-              <p><small><a href="forgot_password"><?php echo lang('login_forgot_password');?></small></p>
+              <p><small><a href="forgot_password">Forgot Password?</small></p>
             </div>
           </div>
         </div>
