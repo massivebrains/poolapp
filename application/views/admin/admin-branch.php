@@ -30,7 +30,6 @@
 
 					<div class="panel">
 						<?php echo validation_errors(); ?>
-						<?php echo $this->session->flashdata('message'); ?>
 						<ul class="nav nav-tabs nav-tabs-linetriangle" data-init-reponsive-tabs="dropdownfx">
 							<li class="active">
 								<a data-toggle="tab" href="#branches"><span>Branches</span></a>
@@ -49,7 +48,7 @@
 											
 											<div class="clearfix"></div>
 
-											<table class="table " id="dataTable">
+											<table class="table table-bordered" id="dataTable">
 												<thead>
 													<tr>
 														<td>S/NO</td>
@@ -112,7 +111,11 @@
 												<label>Branch Name</label>
 												<span class="help">e.g. Lagos</span>
 												<input type="text" name="branch_name" class="form-control" required />
-												<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+												<?php  $csrf = array(
+												'name' => $this->security->get_csrf_token_name(),
+												'hash' => $this->security->get_csrf_hash());
+											 ?>
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 											</div>
 
 											<div class="form-group">

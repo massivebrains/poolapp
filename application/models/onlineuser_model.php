@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Branch_model extends CI_Model 
+class Onlineuser_model extends CI_Model 
 {
 
 	public function __construct()
@@ -9,7 +9,21 @@ class Branch_model extends CI_Model
 		parent::__construct();
 	}
 
-	public function create()
+	public function read()
+	{
+		$query = $this->db->get('onlineusers');
+		if($query->num_rows() < 1)
+		{
+			return FALSE;
+		}
+		else
+		{
+			return $query->result();
+		}
+	}
+
+
+	/*public function create()
 	{
 		$data = array(
 			'branch_name' => $this->input->post('branch_name'),
@@ -22,19 +36,6 @@ class Branch_model extends CI_Model
 		else
 		{
 			return FALSE;
-		}
-	}
-
-	public function read($id = NULL)
-	{
-		$query = $this->db->get('branches');
-		if($query->num_rows() < 1)
-		{
-			return FALSE;
-		}
-		else
-		{
-			return $query->result();
 		}
 	}
 
@@ -73,5 +74,20 @@ class Branch_model extends CI_Model
 		$query = $this->db->get('branches');
 		return $query->num_rows();
 	}
+
+	public function branch_field($id, $field)
+	{
+        $query = $this->db->get_where('branches', array('branch_id'=>$id));
+        $row = $query->row();
+        if (empty($row->$field))
+        {
+            return 'Unavaliable';
+        }
+        else
+        {
+            return $row->$field;
+        }
+
+    }*/
 
 }

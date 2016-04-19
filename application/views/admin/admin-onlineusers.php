@@ -1,11 +1,11 @@
-<?php include 'tables-head.php' ?>
+<?php $this->load->view('includes/tables-head') ?>
 <body class="fixed-header ">
-	<?php include 'admin-nav.php' ?>
+<?php $this->load->view('admin/admin-nav') ?>
 
 
 	<div class="page-container ">
 
-		<?php include 'admin-header.php' ?>
+	<?php $this->load->view('admin/admin-header') ?>
 
 
 		<div class="page-content-wrapper ">
@@ -100,11 +100,9 @@
 				</div>
 
 			</div>
-
-			<?php include 'footer-note.php' ?>
+			<?php $this->load->view('includes/footer-note') ?>
 
 		</div>
 
 	</div>
-
-	<?php include 'tables-footer.php' ?>
+	<?php $this->load->view('includes/tables-footer') ?>

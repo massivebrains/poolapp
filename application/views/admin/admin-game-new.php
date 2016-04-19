@@ -1,11 +1,12 @@
-<?php include 'tables-head.php' ?>
-<body class="fixed-header ">
-	<?php include 'admin-nav.php' ?>
+<?php //var_dump($games) ?>
+<?php $this->load->view('includes/tables-head') ?>
+<body class="fixed-header" ng-app="app" ng-controller="gameCtrl">
+	<?php $this->load->view('admin/admin-nav') ?>
 
 
-	<div class="page-container ">
+	<div class="page-container">
 
-		<?php include 'admin-header.php' ?>
+		<?php $this->load->view('admin/admin-header') ?>
 
 
 		<div class="page-content-wrapper ">
@@ -49,93 +50,128 @@
 									<div class="row">
 										<div class="col-lg-12 col-md-12">
 											<div class="clearfix"></div>
-
+											<?php echo validation_errors(); ?>
 											<table class="table">
 												<thead>
 													<tr>
 														<td>NUMBER</td>
 														<td>HOME</td>
 														<td>AWAY</td>
-														<td>DATE</td>
-														<td>ACTION</td>
+														<td>DEADLINE <small>format: (2016-04-18 11:24:00)</small></td>
+														
 													</tr>
 
 												</thead>
 												<tbody>
-													<?php for($i = 1; $i<=49; $i++){ ?>
-													<tr>
-														<form role="form">
-															<td><?php echo $i; ?></td>
-															<td><input id="home" type="text" name="home" class="form-control" required></td>
-															<td><input id="away" type="text" name="away" class="form-control" required></td>
+													<form role="form" method="post" action="<?=site_url('admin/game/create') ?>">
+														<?php for($i = 1; $i<=49; $i++){ ?>
+														<tr>
+
 															<td>
-																<div class="input-daterange input-group" id="datepicker-range">
-																	<input type="text" class="input-sm form-control" name="start"/>
-																	<span class="input-group-addon">to</span>
-																	<input type="text" class="input-sm form-control" name="end"/>
-																</div>
+																<?=$i; ?>
+																<input type="hidden" name="data[<?=$i; ?>][number]" value="<?=$i; ?>" />
 															</td>
-															<td><input id="sumit" type="submit" name="submit" value="Submit" onclick="confirm('Are you sure')" class="btn btn-sm btn-primary"></td>
-														</form>
-													</tr>
-													<?php } ?>										
-												</tbody>
-											</table>
-										</div>
 
+															<td>
+																<input id="home" type="text" name="data[<?=$i ?>][home]" class="form-control" required />
+															</td>
+															<td>
+																<input id="away" type="text" name="data[<?=$i ?>][away]" class="form-control" required />
+															</td>
+															<td>
+																<input type="date" class="input-sm form-control" name="data[<?=$i ?>][deadline]" placeholder="2016-04-18 11:24:00" required/>
+															</td>
+
+														</tr>
+														<?php } ?>	
+														<?php  $csrf = array(
+															'name' => $this->security->get_csrf_token_name(),
+															'hash' => $this->security->get_csrf_hash());
+															?>
+															<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+															<tr>
+																<td>
+																	<label for="number">Week Number <small>e.g. 34</small></label>
+																	<input type="number" name="week_number" class="form-control" required placeholder="0">
+																</td>
+
+																<td>
+																	<label for="week_start_date">Week Start Date (<small>format: 2016-04-18</small>)</label>
+																	<input  type="date" name="week_start_date" class="form-control" required placeholder="2016-04-18">
+																</td>
+																<td>
+																	<label for="week_start_date">Week End Date (<small>format: 2016-04-18</small>)</label>
+																	<input  type="date" name="week_end_date" class="form-control" required placeholder="2016-04-18">
+																</td>
+																<td>
+																	<label for="submit">Submit All Entries</label><br />
+																	<input id="sumbit" type="submit" name="submit" value="Submit" class="btn btn-sm btn-primary">
+																</td>
+															</tr>
+															
+														</form>	 								
+													</tbody>
+
+												</table>
+												<br />
+											</div>
+
+										</div>
 									</div>
+									<!-- Veiw Branches Table end -->
 								</div>
-								<!-- Veiw Branches Table end -->
+
+								<div class="tab-pane slide-left" id="game">
+									<!-- View Branches Table start -->
+									<div class="conatiner">
+										<div class="row">
+											<div class="col-lg-12 col-md-12">
+
+												<div class="clearfix"></div>
+
+												<table class="table table-responsive">
+													<thead>
+														<tr>
+															<td>NUMBER</td>
+															<td >DEADLINE</td>
+															<td>TOGGLE</td>
+														</tr>
+
+													</thead>
+													<tbody>
+														<?php foreach ($games as $row): ?>
+															<tr>
+																<td><?=$row->number; ?></td>
+																<td><?=$row->deadline ?></td>
+																<td>
+																	<?php if ($row->status == 'active'){ ?>
+																	<input type="checkbox" ng-click="toggleGame(<?=$row->number; ?>, <?=$row->week_number ?>)" id="<?=$row->number ?>"checked/>
+																	<?php  }else{ ?>
+																	<input type="checkbox" disabled id="<?=$row->number ?>" />
+																	<?php } ?>
+																</td>
+															</tr>
+														<?php endforeach; ?>										
+													</tbody>
+												</table>
+											</div>
+
+										</div>
+									</div>
+									<!-- Veiw Branches Table end -->
+								</div>
+
 							</div>
 
-							<div class="tab-pane slide-left" id="game">
-								<!-- View Branches Table start -->
-								<div class="conatiner">
-									<div class="row">
-										<div class="col-lg-12 col-md-12">
-											
-											<div class="clearfix"></div>
 
-											<table class="table table-responsive">
-												<thead>
-													<tr>
-														<td>NUMBER</td>
-														<td>DEADLINE</td>
-														<td>TOGGLE <small>(purple = open) &nbsp; (white = closed)</small></td>
-													</tr>
 
-												</thead>
-												<tbody>
-													<?php for($i = 1; $i<=49; $i++){ ?>
-													<tr>
-														<td><?php echo $i; ?></td>
-														<td>Mon 12, Jan 3:45pm</td>
-														<td>
-															<input type="checkbox" data-init-plugin="switchery" data-size="small" data-color="primary" checked="checked"/>
-														</td>
-													</tr>
-													<?php } ?>										
-												</tbody>
-											</table>
-										</div>
-
-									</div>
-								</div>
-								<!-- Veiw Branches Table end -->
-							</div>
-							
 						</div>
-
-
 
 					</div>
 
+					<?php $this->load->view('includes/footer-note') ?>
+
 				</div>
 
-				<?php include 'footer-note.php' ?>
-
 			</div>
-
-		</div>
-
-		<?php include 'tables-footer.php' ?>
+			<?php $this->load->view('includes/tables-footer') ?>

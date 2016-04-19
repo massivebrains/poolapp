@@ -30,7 +30,6 @@
 
 					<div class="panel">
 						<?php echo validation_errors(); ?>
-						<?php echo $this->session->flashdata('message'); ?>
 						<ul class="nav nav-tabs nav-tabs-linetriangle" data-init-reponsive-tabs="dropdownfx">
 							<li class="active">
 								<a data-toggle="tab" href="#branches"><span>Admins</span></a>

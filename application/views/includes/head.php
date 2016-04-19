@@ -21,11 +21,8 @@
 	<link href="<?php echo base_url() ?>assets/assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url() ?>assets/assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen"/>
 	<link href="<?php echo base_url() ?>assets/assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen"/>
-	<link href="<?php echo base_url() ?>assets/assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen"/>
 	<link href="<?php echo base_url() ?>assets/assets/plugins/nvd3/nv.d3.min.css" rel="stylesheet" type="text/css" media="screen"/>
 	<link href="<?php echo base_url() ?>assets/assets/plugins/mapplic/css/mapplic.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url() ?>assets/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
-	<link href="<?php echo base_url() ?>assets/assets/plugins/jquery-metrojs/MetroJs.css" rel="stylesheet" type="text/css" media="screen"/>
 	<link href="<?php echo base_url() ?>assets/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
 	<link class="main-stylesheet" href="<?php echo base_url() ?>assets/pages/css/pages.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url() ?>assets/assets/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" media="screen"/>

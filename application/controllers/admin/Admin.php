@@ -8,10 +8,10 @@ class Admin extends CI_Controller
 	{
 		parent::__construct();
 
-		/*if ($this->session->user_id == 0)
+		if ($this->session->user_id == 0)
 		{
 			redirect('auth/index/admin', 'refresh');
-		}*/
+		}
 		$this->load->model('admin_model');
 	}
 

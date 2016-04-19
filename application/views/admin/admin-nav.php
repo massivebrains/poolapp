@@ -14,26 +14,26 @@
 
         <ul class="menu-items">
             <li class="m-t-30 ">
-                <a href="admin-index.php" class="detailed">
+                <a href="<?=site_url('admin/admin') ?>" class="detailed">
                     <span class="title">Dashboard</span>
                     <span class="details">Week 12</span>
                 </a>
                 <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
             </li>
             <li class="">
-                <a href="<?php echo site_url('admin/branch/read') ?>" class="detailed">
+                <a href="<?=site_url('admin/branch/') ?>" class="detailed">
                     <span class="title">Branches</span>
                 </a>
                 <span class="icon-thumbnail">BR</span>
             </li>
             <li class="">
-                <a href="admin-agent.php" class="detailed">
+                <a href="<?=site_url('admin/agent') ?>" class="detailed">
                     <span class="title">Agents</span>
                 </a>
                 <span class="icon-thumbnail">AG</span>
             </li>
             <li class="">
-                <a href="admin-onlineusers.php" class="detailed">
+                <a href="<?=site_url('admin/onlineusers') ?>" class="detailed">
                     <span class="title">Online Users</span>
                 </a>
                 <span class="icon-thumbnail">OU</span>
@@ -89,11 +89,11 @@
                         <span class="icon-thumbnail"><i class="pg-menu_lv"></i></span>
                         <ul class="sub-menu">
                             <li>
-                                <a href="admin-game-new.php">New Game</a>
+                                <a href="<?=site_url('admin/game') ?>">New Game</a>
                                 <span class="icon-thumbnail">NG</span>
                             </li>
                             <li>
-                                <a href="admin-game-result.php">Results</a>
+                                <a href="<?=site_url('admin/admin/view/admin-game-result') ?>">Results</a>
                                 <span class="icon-thumbnail">RE</span>
                             </li>
                         </ul>
@@ -108,7 +108,7 @@
                     </li>
 
                     <li class="">
-                        <a href="index.php"><span class="title">Logout</span></a>
+                        <a href="<?=site_url('auth/logout/admin') ?>"><span class="title">Logout</span></a>
                         <span class="icon-thumbnail"><i class="pg-power"></i></span>
                     </li>
 

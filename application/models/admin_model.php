@@ -14,7 +14,7 @@ class Admin_model extends CI_Model
 		$data = array(
 			'admin_name' => $this->input->post('admin_name'),
 			'admin_email' => $this->input->post('admin_email'),
-			'admin_phone' => $this->input->post('admin_name'),
+			'admin_phone' => $this->input->post('admin_phone'),
 			'admin_password' => md5($this->input->post('admin_password')),
 			'created' => date('Y-m-d H:i:s')
 			);

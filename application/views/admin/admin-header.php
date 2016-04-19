@@ -49,6 +49,7 @@
 			<li class="p-r-15 inline">
 				<a href="#" class="icon-set clip "></a>
 			</li>
+			<span><?php echo $this->session->flashdata('message'); ?></span>
 		</div>
 	</div>
 	
@@ -66,7 +67,7 @@
 				</button>
 				<ul class="dropdown-menu profile-dropdown" role="menu">
 					<li class="bg-master-lighter">
-						<a href="#" class="clearfix">
+						<a href="<?php echo site_url('auth/logout/admin') ?>" class="clearfix">
 							<span class="pull-left">Logout</span>
 							<span class="pull-right"><i class="pg-power"></i></span>
 						</a>

@@ -4,7 +4,7 @@
 
     <div class="bg-pic">
 
-      <img src="<?php echo base_url() ?>assets/assets/img/demo/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg" data-src="<?php echo base_url() ?>assets/assets/img/demo/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg" data-src-retina="<?php echo base_url() ?>assets/assets/img/demo/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg" alt="" class="lazy">
+      <img src="<?php echo base_url() ?>assets/assets/img/login-bg.jpg" data-src="<?php echo base_url() ?>assets/assets/img/login-bg.jpg" data-src-retina="<?php echo base_url() ?>assets/assets/img/login-bg.jpg" alt="" class="lazy">
 
 
       <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
@@ -55,7 +55,11 @@
               <a href="#" class="text-info small">Help? Contact Support</a>
             </div>
           </div>
-
+          <?php  $csrf = array(
+                        'name' => $this->security->get_csrf_token_name(),
+                        'hash' => $this->security->get_csrf_hash());
+                       ?>
+                      <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
           <input name="submit" class="btn btn-primary btn-cons m-t-10" type="submit" value="Sign in">
         </form>
 

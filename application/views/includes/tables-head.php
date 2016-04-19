@@ -20,16 +20,12 @@
 <link href="<?php echo base_url() ?>assets/assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url() ?>assets/assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="<?php echo base_url() ?>assets/assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen"/>
-<link href="<?php echo base_url() ?>assets/assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="<?php echo base_url() ?>assets/assets/plugins/jquery-datatable/media/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url() ?>assets/assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo base_url() ?>assets/assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" media="screen">
 <link href="<?php echo base_url() ?>assets/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="<?php echo base_url() ?>assets/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
 <link class="main-stylesheet" href="<?php echo base_url() ?>assets/pages/css/pages.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url() ?>assets/assets/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" media="screen"/>
-<link href="<?php echo base_url() ?>assets/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
-<link href="<?php echo base_url() ?>assets/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" media="screen">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/assets/plugins/toastr/toastr.min.css">
 <!--[if lte IE 9]>
 	<link href="<?php echo base_url() ?>assets/assets/plugins/codrops-dialogFx/dialog.ie.css" rel="stylesheet" type="text/css" media="screen" />
