@@ -18,7 +18,7 @@
 
 							<ul class="breadcrumb">
 								<li><p>Dashboard</p></li>
-								<li><a href="#" class="active">Branches</a></li>
+								<li><a href="#" class="active">Odds</a></li>
 							</ul>
 
 						</div>
@@ -32,7 +32,7 @@
 						<?php echo validation_errors(); ?>
 						<ul class="nav nav-tabs nav-tabs-linetriangle" data-init-reponsive-tabs="dropdownfx">
 							<li class="active"> 
-								<a data-toggle="tab" href="#branches"><span>Branches</span></a>
+								<a data-toggle="tab" href="#branches"><span>Odds</span></a>
 							</li>
 							<li>
 								<a data-toggle="tab" href="#add"><span>Add New</span></a>
@@ -52,7 +52,7 @@
 												<thead>
 													<tr>
 														<td>S/NO</td>
-														<td>BRANCH NAME</td>
+														<td>ODD TYPE</td>
 														<td>ACTION</td>
 													</tr>
 

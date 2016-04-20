@@ -1,5 +1,5 @@
 <?php $this->load->view('includes/tables-head') ?>
-<body class="fixed-header" ng-app="app" ng-controller="gameCtrl" ng-init="startResult()" >
+<body class="fixed-header">
 	<?php $this->load->view('admin/admin-nav') ?>
 
 

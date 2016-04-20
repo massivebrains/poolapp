@@ -103,7 +103,7 @@
                         <span class="icon-thumbnail"><i class="fa fa-asterisk"></i></span>
                     </li>
                     <li class="">
-                        <a href="admin-notification.php"><span class="title">Settings</span></a>
+                        <a href="<?=site_url('admin/admin/view/admin-settings') ?>"><span class="title">Settings</span></a>
                         <span class="icon-thumbnail"><i class="fa fa-cogs"></i></span>
                     </li>
 

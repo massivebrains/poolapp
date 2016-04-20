@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Agent extends CI_Controller 
+class Odd extends CI_Controller 
 {
 
 	public function __construct()
@@ -9,25 +9,23 @@ class Agent extends CI_Controller
 		parent::__construct();
 		if ($this->session->user_id == 0)
 		{
-			redirect('auth/index/agent', 'refresh');
+			redirect('auth/index/admin', 'refresh');
 		}
-		$this->load->model('admin_agent_model');
-		$this->load->model('admin_branch_model');
+		$this->load->model('admin_odd_model');
 	}
 	
 
-	
 	public function index()
 	{
 		
-		if ($data['agents'] = $this->admin_agent_model->read())
+		if ($data['odds'] = $this->admin_odd_model->index())
 		{
-			$this->load->view('admin/admin-agent', $data);
+			$this->load->view('admin/admin-odd', $data);
 		}
 		else
 		{
 			$this->session->set_flashdata('message', 'No Records Avaliable.');
-			$this->load->view('admin/admin-agent');
+			$this->load->view('admin/admin-odd');
 		}
 
 	}
@@ -35,17 +33,14 @@ class Agent extends CI_Controller
 	public function create()
 	{
 		$this->form_validation->set_error_delimiters('<span class="span span-important">', '</span>');
-		$this->form_validation->set_rules('agent_name', 'Agent Name', 'required');
-		$this->form_validation->set_rules('agent_phone', 'Agent Phone', 'required');
-		$this->form_validation->set_rules('agent_password', 'Agent Password', 'required');
-		$this->form_validation->set_rules('branch_id', 'Agent Branch', 'required');
+		$this->form_validation->set_rules('odd_name', 'odd Name', 'required');
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->index();
 		}
 		else
 		{
-			if ($this->admin_agent_model->create())
+			if ($this->admin_odd_model->create())
 			{
 				$this->session->set_flashdata('message', 'Record Added Successfully.');
 				$this->index();
@@ -58,8 +53,6 @@ class Agent extends CI_Controller
 		}
 	}
 
-	
-
 
 
 	public function edit($id = NULL)
@@ -71,15 +64,14 @@ class Agent extends CI_Controller
 		else
 		{
 			$this->form_validation->set_error_delimiters('<span class="span span-important">', '</span>');
-			$this->form_validation->set_rules('agent_name', 'agent name', 'required');
-			$this->form_validation->set_rules('agent_phone', 'agent phone', 'required');
+			$this->form_validation->set_rules('odd_name', 'odd', 'required');
 			if ($this->form_validation->run() == FALSE)
 			{
 				$this->index();
 			}
 			else
 			{
-				if ($this->admin_agent_model->edit($id))
+				if ($this->admin_odd_model->edit($id))
 				{
 					$this->session->set_flashdata('message', 'Record Edited Successfully');
 					$this->index();
@@ -97,7 +89,7 @@ class Agent extends CI_Controller
 
 	public function delete($id = NULL)
 	{
-		if ($this->admin_agent_model->delete($id))
+		if ($this->admin_odd_model->delete($id))
 		{
 			$this->session->set_flashdata('message', 'Record Deleted Successfully');
 			$this->index();
@@ -109,9 +101,9 @@ class Agent extends CI_Controller
 		}
 	}
 
-	public function get_agent_count()
+	public function get_odd_count()
 	{
-		return $this->admin_agent_model->get_agent_count();
+		return $this->admin_odd_model->get_odd_count();
 	}
 
 }

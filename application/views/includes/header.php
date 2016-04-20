@@ -85,8 +85,6 @@
 			<li class="p-r-15 inline">
 				<a href="#" class="icon-set clip "></a>
 			</li>
-
-			<a href="#" class="search-link text-danger" ><i class="fa fa-cloud"></i>ODD-TYPE: DEFAULT</a>
 		</div>
 	</div>
 	
@@ -105,7 +103,7 @@
 				<ul class="dropdown-menu profile-dropdown" role="menu">
 					<li><a href="" data-target="#modalSlideLeft" data-toggle="modal"><i class="fs-14 sl-user"></i> Message Admin</a></li>
 					<li class="bg-master-lighter">
-						<a href="#" class="clearfix">
+						<a href="<?=site_url('auth/logout') ?>" class="clearfix">
 							<span class="pull-left">Logout</span>
 							<span class="pull-right"><i class="pg-power"></i></span>
 						</a>

@@ -1,11 +1,11 @@
-<?php include 'tables-head.php' ?>
-<body class="fixed-header" onload="start()">
-	<?php include 'nav.php' ?>
+<?php $this->load->view('includes/tables-head') ?>
+<body class="fixed-header" ng-app="app" ng-controller="gameCtrl" ng-init="start()" >
+<?php $this->load->view('agent/agent-nav') ?>
 
 
 	<div class="page-container ">
 
-		<?php include 'header.php' ?>
+<?php $this->load->view('includes/header') ?>
 
 
 		<div class="page-content-wrapper ">
@@ -31,16 +31,15 @@
 
 				<div class="container-fluid container-fixed-lg">
 
-					<?php include 'play-interface.php' ?>
+				<?php $this->load->view('agent/play-interface') ?>
 
 				</div>
 
 			</div>
 
-			<?php include 'footer-note.php' ?>
+			<?php $this->load->view('includes/footer-note') ?>
 
 		</div>
 
 	</div>
-
-	<?php include 'tables-footer.php' ?>
+<?php $this->load->view('includes/tables-footer') ?>
