@@ -29,51 +29,11 @@
 			<div class="brand inline">
 				<img src="assets/img/logo.png" alt="logo" data-src="<?php echo base_url() ?>assets/assets/img/logo.png" data-src-retina="<?php echo base_url() ?>assets/assets/img/logo_2x.png" width="78" height="22">
 			</div>
-
-			<ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
-				<li class="p-r-15 inline">
-					<div class="dropdown">
-						
-						<a href="admin-message.php" class="search-link" ><i class="fa fa-envelope-o"></i>Messages</a> <span class="label label-danger">5</span> 
-
-					</div>
-				</li>
-				<li class="p-r-15 inline">
-					<a href="#" class="icon-set clip "></a>
-				</li>
-				<li class="p-r-15 inline">
-					<a href="#" class="icon-set grid-box"></a>
-				</li>
-			</ul>
-			<label class="label label-danger"><i class="fa fa-tag"></i> Week 12</label>
+			<label class="label label-danger"><i class="fa fa-tag"></i> Week <?=$this->admin_game_model->get_current_week() ?></label>
 			<li class="p-r-15 inline">
 				<a href="#" class="icon-set clip "></a>
 			</li>
 			<span><?php echo $this->session->flashdata('message'); ?></span>
-		</div>
-	</div>
-	
-	<div class=" pull-right">
-
-		<div class="visible-lg visible-md m-t-10">
-			<div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
-				<span class="semi-bold">Admin</span> <span class="text-master">Segun</span>
-			</div>
-			<div class="dropdown pull-right">
-				<button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<span class="thumbnail-wrapper d32 circular inline m-t-5">
-						<img src="<?php echo base_url() ?>assets/assets/img/profiles/avatar.jpg" alt="" data-src="<?php echo base_url() ?>assets/assets/img/profiles/avatar.jpg" data-src-retina="<?php echo base_url() ?>assets/assets/img/profiles/avatar_small2x.jpg" width="32" height="32">
-					</span>
-				</button>
-				<ul class="dropdown-menu profile-dropdown" role="menu">
-					<li class="bg-master-lighter">
-						<a href="<?php echo site_url('auth/logout/admin') ?>" class="clearfix">
-							<span class="pull-left">Logout</span>
-							<span class="pull-right"><i class="pg-power"></i></span>
-						</a>
-					</li>
-				</ul>
-			</div>
 		</div>
 	</div>
 </div>

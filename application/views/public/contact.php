@@ -1,4 +1,4 @@
-<?php include 'header.php' ?>
+<?php $this->load->view('public/header') ?>
 	<!-- /nav end-->
 	<!-- PAGE TITLE
 ================================================== -->
@@ -61,4 +61,4 @@
 		
 	</div>
 	<!-- /.wrapsemibox end-->
-	<?php include 'footer.php' ?>
+<?php $this->load->view('public/footer') ?>

@@ -101,14 +101,16 @@
 						<label>STAKE</label>
 						<input type="number" name="stake" ng-model="stake" id="stake" class="form-control" placeholder="&#8358;" style="-moz-appearance:textfield" required>
 					</div>
+					<div class="">
+						<label>ODD TYPE:</label>&nbsp;
+						Default&nbsp;<input type="radio" ng-model="odd" value="default" id="default" checked>&nbsp;&nbsp;
+						80&nbsp;<input type="radio" ng-model="odd" value="eighty" id="eighty">&nbsp;&nbsp;
+						60&nbsp;<input type="radio" ng-model="odd" value="sixty" id="sixty">
+					</div>
 
 					<div class="">
 						<button id="submit" ng-click="submit($event)" class="btn"><i class="fs-14 sl-calculator"></i> Play</button>
 						<button id="reset" ng-click="reset($event)" class="btn">Reset</button>
-					</div>
-
-					<div id="couponHolder">
-
 					</div>
 				</div>
 

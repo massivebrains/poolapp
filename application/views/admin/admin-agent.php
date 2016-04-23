@@ -51,7 +51,7 @@
 											
 											<div class="clearfix"></div>
 
-											<table class="table " id="dataTable">
+											<table class="table table-bordered " id="dataTable">
 												<thead>
 													<tr>
 														<td>S/NO</td>

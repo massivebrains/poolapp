@@ -1,68 +1,69 @@
-<?php include 'header.php' ?>
+<?php //var_dump($user) ?>
+<?php $this->load->view('public/header') ?>
 	<!-- PAGE TITLE
-================================================== -->
+	================================================== -->
 	<section class="pageheader-default text-center">
-	<div class="semitransparentbg">
-		<h1 class="animated fadeInLeftBig notransition">Olaiya Segun</h1>
-		
-	</div>
+		<div class="semitransparentbg">
+			<h1 class="animated fadeInLeftBig notransition"><?=strtoupper($user->ouser_surname.' '.$user->ouser_firstname); ?></h1>
+
+		</div>
 	</section>
 	<div class="wrapsemibox">
 		<div class="semiboxshadow text-center">
 			<img src="img/shp.png" class="img-responsive" alt="">
 		</div>
 		<!-- ABOUT
-================================================== -->
+		================================================== -->
 		<section class="container">
-		<h5 class="pull-right">Balance: &#8358; 7600</h5>
-		<div class="row">
-			<div class="col-sm-2 col-lg-2 col-md-2">
-				<ul>
-					<li><a href="user-account.php" title="">My Profile</a></li>
-					<li><a href="user-played-coupons.php" title="">My Played Coupons</a></li>
-					<li><a href="user-betting-history.php" title="">My Betting History</a></li>
-					<li><a href="user-recharge.php" title="">Recharge</a></li>
-					<li><a href="user-withdrawal.php" title="">Request Withdrawal</a></li>
-					<li><a href="user-invite.php" title="">Invite Friends</a></li>
-					<li><a href="contact.php" title="">Contact Us</a></li>
-					<li><a href="index.php" title="">Logout</a></li>
-				</ul>
-			</div>
+			<h5 class="pull-right">Balance: &#8358; 7600</h5>
+			<div class="row">
+				<?php $this->load->view('public/user-nav') ?>
 
-			<div class="col-sm-10 col-lg-10 col-md-10">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<form action="" method="POST" role="form">
-							<legend>Profile</legend>
-						
-							<div class="form-group">
-								<label for="">Surname</label>
-								<input type="text" class="form-control" id="" value="Olaiya" disabled>
+				<div class="col-sm-10 col-lg-10 col-md-10">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<?=validation_errors(); ?>
+							<?=$this->session->flashdata('message'); ?>
+							<form method="POST" action="<?=site_url('public/ouser/edit/'.$this->session->user_id) ?>">
+								<legend>Profile</legend>
+
+								<div class="form-group">
+									<label for="">Surname</label>
+									<input type="text" class="form-control" id="" value="<?=strtoupper($user->ouser_surname); ?>" disabled>
+								</div>
+								<div class="form-group">
+									<label for="">Firstname</label>
+									<input type="text" class="form-control" id="" value="<?=strtoupper($user->ouser_firstname); ?>" disabled>
+								</div>
+								<div class="form-group">
+									<label for="">Phone</label>
+									<input type="text" name="ouser_phone"class="form-control" id="" value="<?=$user->ouser_phone ?>" required>
+								</div>
+								<div class="form-group">
+									<label for="">Email</label>
+									<input type="text" name="ouser_email" class="form-control" id="" value="<?=$user->ouser_email ?>" required>
+								</div>
+								<div class="form-group">
+									<label for="">New Password</label>
+									<input type="text" name="password" class="form-control" id="">
+								</div>
+								<?php  $csrf = array(
+									'name' => $this->security->get_csrf_token_name(),
+									'hash' => $this->security->get_csrf_hash());
+									?>
+									<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+
+
+
+									<button type="submit" class="btn btn-primary btn-sm">Update</button>
+								</form>
 							</div>
-							<div class="form-group">
-								<label for="">Firstname</label>
-								<input type="text" class="form-control" id="" value="Segun" disabled>
-							</div>
-							<div class="form-group">
-								<label for="">Phone</label>
-								<input type="text" class="form-control" id="" value="08175020329">
-							</div>
-							<div class="form-group">
-								<label for="">Email</label>
-								<input type="text" class="form-control" id="" value="vadeshayo@gmail.com">
-							</div>
-						
-							
-						
-							<button type="submit" class="btn btn-primary btn-sm">Update</button>
-						</form>
+						</div>
 					</div>
-				</div>
+				</section>
+
+
+				<!-- /. end call to action-->
 			</div>
-		</section>
-		
-	
-		<!-- /. end call to action-->
-	</div>
-	<!-- /.wrapsemibox end-->
-	<?php include 'footer.php' ?>
+			<!-- /.wrapsemibox end-->
+			<?php $this->load->view('public/footer') ?>

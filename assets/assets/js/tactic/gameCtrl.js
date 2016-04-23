@@ -31,6 +31,21 @@ app.controller("gameCtrl", function($scope, $http)
    /* ******************************************************** END OF ADMIN FUNCTINOS ************************ */
 
    /* ************************************************ AGENT FUNCTIONS ************************************ */
+   $scope.odd = 'default';
+
+   $scope.totalStake = 0;
+   setInterval(function()
+   {
+        $http.get(site_url+'agent/index/get_total_stake/')
+        .then(function successCallback(response) 
+        {
+            console.log(response.data);
+            $scope.totalStake = response.data;
+        }, function errorCallback(response) 
+        {
+            console.log(response.data);
+        });
+   },5000);
 
    $scope.start = function()
    {
@@ -76,6 +91,11 @@ $scope.selectNumber = function(number)
         $scope.games.push(number);
     };
 
+    $scope.sortNumber = function(a,b) 
+    {
+        return a - b;
+    }
+
 
     $scope.reset = function($event)
     {
@@ -83,6 +103,7 @@ $scope.selectNumber = function(number)
         $('#choosen').html('');
         $('#submit').prop('disabled', true).removeClass('btn-warning').removeClass('btn-success');
         $('#stake').val('');
+        $scope.games = [];
         for (i = 1; i<=49; i++)
         {
             current = $('#n'+i);
@@ -95,20 +116,24 @@ $scope.selectNumber = function(number)
     {
         
         $event.preventDefault();
-        $scope.games.sort(); 
-        console.log($scope.games.toString()); 
+        $scope.games.sort($scope.sortNumber);
         var game = $scope.games.toString();
-        $http.get(site_url+'agent/game/post/'+game+'/'+$scope.stake)
+        $http.get(site_url+'agent/game/post/'+game+'/'+$scope.stake+'/'+$scope.odd)
         .then(function successCallback(response) 
         {
-            console.log(response);
+            console.log(response.data);
+            if(response.data == -1)
+                window.location.href = window.location.href;
+            console.log(game);
+            console.log($scope.stake);
+            console.log($scope.odd);
         }, function errorCallback(response) 
         {
-            console.log(response);
+            console.log(response.data);
+            console.log(game);
+            console.log($scope.stake);
+            console.log($scope.odd);
         });
-        $scope.csrf="<?=$csrf['hash'];?>";
-        console.log($scope.csrf);
-        
         for (i = 1; i<=49; i++)
         {
             current = $('#n'+i);
@@ -117,14 +142,11 @@ $scope.selectNumber = function(number)
                 $('#n'+i).removeClass('btn-danger').addClass('btn-black').prop('disabled', false);
             }
         }
-
+        $scope.games = [];
         $('#choosen').empty(); $('#stake').val('');
-        toastr.options = {progressBar: true, timeOut:7000};
+        toastr.options = {timeOut:3000};
         $('#submit').removeClass('btn-success');
         toastr.info('Game Played Successfully');
-        $('#couponHolder').html('<h1 class="text-center semi-bold"><sup><small class="semi-bold">Coupon ID</small></sup>4958574</h1>');
-        $('#couponHolder').fadeIn(3000).fadeOut(6500);
-        //console.log($scope.games);
 
     };
 

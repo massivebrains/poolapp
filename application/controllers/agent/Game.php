@@ -11,19 +11,21 @@ class Game extends CI_Controller
 		{
 			redirect('auth/index/admin', 'refresh');
 		}
-		//$this->load->model('admin_game_model');
+		$this->load->model('game_model');
+		$this->load->model('admin_game_model');
 	}
 
-	public function post($game = NULL, $stake = NULL)
+	public function post($game = NULL, $stake = NULL, $odd = NULL)
 	{
-		if($game == NULL || $stake == NULL)
+		if($game == NULL || $stake == NULL || $stake == NULL)
 		{
-			echo 'Null Data provided';
+			echo 0; 
 		}
 		else
 		{
-			echo $game.'<br>';
-			echo $stake;
+			$week_number = $this->admin_game_model->get_current_week();
+			$data = $this->game_model->post($game, $stake, $odd, $week_number, 'agent');
+			echo $data;
 		}
 	}
 }

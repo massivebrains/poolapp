@@ -6,19 +6,11 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Tactic Fixed</title>
-<!-- Style -->
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<!-- Responsive -->
-<link href="css/responsive.css" rel="stylesheet">
-<!-- Choose Layout -->
-<link href="css/layout-semiboxed.css" rel="stylesheet">
-<!-- Choose Skin -->
-<link href="css/skin-red.css" rel="stylesheet">
-<!-- Demo -->
-<link rel="stylesheet" id="main-color" href="css/skin-red.css" media="screen"/>
-<!-- Favicon -->
-<link rel="shortcut icon" href="img/favicon.ico">
+<link href="<?=base_url() ?>assets/public/css/bootstrap.css" rel="stylesheet">
+<link href="<?=base_url() ?>assets/public/css/style.css" rel="stylesheet">
+<link href="<?=base_url() ?>assets/public/css/responsive.css" rel="stylesheet">
+<link rel="stylesheet" id="main-color" href="<?=base_url() ?>assets/public/css/skin-red.css" media="screen"/>
+<link rel="shortcut icon" href="<?php echo base_url() ?>assets/public/img/favicon.ico">
 <!-- IE -->
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +19,7 @@
       <script src="js/respond.min.js"></script>	   
     <![endif]-->
 <!--[if lte IE 8]>
-	<link href="css/ie8.css" rel="stylesheet">
+	<link href="<?=base_url() ?>assets/public/css/ie8.css" rel="stylesheet">
 	 <![endif]-->
 </head>
 <body class="off">
@@ -59,23 +51,19 @@
 	<nav class="navbar navbar-fixed-top wowmenu" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand logo-nav" href="index.php"><img src="img/logo.png" alt="logo"></a>
+			<a class="navbar-brand logo-nav" href="<?=site_url('public/index/view/index') ?>"><img src="<?php echo base_url() ?>assets/public/img/logo.png" alt="logo"></a>
 		</div>
 		<ul id="nav" class="nav navbar-nav pull-right">
-			<li class="active"><a href="index.php">Home</a></li>
-			<li><a href="#">Stack</a></li>
-			<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Results <i class="icon-angle-down"></i></a>
-			<ul class="dropdown-menu">
-				<li><a href="result.php">This Week (14)</a></li>
-				<li><a href="#">Last Week (13)</a></li>
-				<li><a href="#">Last Two Weeks (12)</a></li>
-				<li><a href="#">Last Three Weeks (11)</a></li>
-			</ul>
-			</li>
-			<li><a href="about.php">About</a></li>
-			<li ><a href="account.php" >Account</a></li>
-			<li><a href="contact.php">Contact</a></li>
+			<li class="active"><a href="<?=site_url('public/index/view/index') ?>">Home</a></li>
+			<li><a href="<?=site_url('public/ouser/stake') ?>">Stake</a></li>
+			<li><a href="<?=site_url('public/index/result') ?>">Results</a></li>
+			<li><a href="<?=site_url('public/index/view/about') ?>">About</a></li>
+			<?php if($this->session->user_id == ''){ ?>
+			<li ><a href="<?=site_url('public/index/view/login') ?>" >Login/Register</a></li>
+			<?php }else{ ?>
+			<li ><a href="<?=site_url('public/ouser/index') ?>" >My Account</a></li>
+			<?php } ?>
+			<li><a href="<?=site_url('public/index/view/contact') ?>">Contact</a></li>
 		</ul>		
 	</div>	
 	</nav>

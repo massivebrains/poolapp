@@ -129,4 +129,18 @@ class Admin_game_model extends CI_Model
 		}
 	}
 
+	public function get_current_week_result()
+	{
+		$query = $this->db->get_where('results', array('week_number'=>$this->get_current_week()));
+		if($query->num_rows() > 0)
+		{
+			return $query->row()->result;
+		}
+		else
+		{
+			return 0;
+		}
+
+	}
+
 }

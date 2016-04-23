@@ -88,10 +88,10 @@
 <!-- /.wrapbox ends-->
 <!-- SCRIPTS, placed at the end of the document so the pages load faster
 ================================================== -->
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/common.js"></script>
+<script src="<?=base_url() ?>assets/public/js/jquery.js"></script>
+<script src="<?=base_url() ?>assets/public/js/bootstrap.js"></script>
+<script src="<?=base_url() ?>assets/public/js/plugins.js"></script>
+<script src="<?=base_url() ?>assets/public/js/common.js"></script>
 <script>
 	/* ---------------------------------------------------------------------- */
 	/*	Carousel
@@ -189,12 +189,14 @@
 </script>
 <!--BEGIN DEMO PANEL
 ================================================== -->
-<link rel="stylesheet" href="demo/css/style-switcher.css" media="screen"/>
-<link rel="stylesheet" href="demo/css/colorpicker.css" media="screen"/>
-<script type="text/javascript" src="demo/js/jquery.cookie.js"></script>
-<script type="text/javascript" src="demo/js/styleswitch.js"></script>
-<script type="text/javascript" src="demo/js/colorpicker.js"></script>
-<script type="text/javascript" src="demo/js/switcher.js"></script>
+<link rel="stylesheet" href="<?=base_url() ?>assets/public/demo/css/style-switcher.css" media="screen"/>
+<link rel="stylesheet" href="<?=base_url() ?>assets/public/demo/css/colorpicker.css" media="screen"/>
+<script type="text/javascript" src="<?=base_url() ?>assets/public/demo/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="<?=base_url() ?>assets/public/demo/js/styleswitch.js"></script>
+<script type="text/javascript" src="<?=base_url() ?>assets/public/demo/js/colorpicker.js"></script>
+<script type="text/javascript" src="<?=base_url() ?>assets/public/demo/js/switcher.js"></script>
+<script src="<?=base_url() ?>assets/assets/js/tactic/angular.min.js"></script>
+<script src="<?=base_url() ?>assets/assets/js/tactic/ouserCtrl.js"></script>
 
 
 <!--END DEMO PANEL

@@ -44,19 +44,11 @@
                     <span class="icon-thumbnail"><i class="pg-menu_lv"></i></span>
                     <ul class="sub-menu">
                         <li>
-                            <a href="admin-sales-winners.php">Winners</a>
+                            <a href="<?=site_url('admin/account/get_winners') ?>">Winning Tickets</a>
                             <span class="icon-thumbnail">WS</span>
                         </li>
                         <li>
-                            <a href="admin-sales-losers.php">Losers</a>
-                            <span class="icon-thumbnail">LS</span>
-                        </li>
-                        <li>
-                            <a href="admin-sales-pending.php">Pending</a>
-                            <span class="icon-thumbnail">PD</span>
-                        </li>
-                        <li>
-                            <a href="admin-sales-summary.php">Summary</a>
+                            <a href="<?=site_url('admin/account/sales_summary') ?>">Summary <small>(Last Week)</small></a>
                             <span class="icon-thumbnail">SM</span>
                         </li>
 
@@ -103,7 +95,7 @@
                         <span class="icon-thumbnail"><i class="fa fa-asterisk"></i></span>
                     </li>
                     <li class="">
-                        <a href="<?=site_url('admin/admin/view/admin-settings') ?>"><span class="title">Settings</span></a>
+                        <a href="#"><span class="title">Settings</span></a>
                         <span class="icon-thumbnail"><i class="fa fa-cogs"></i></span>
                     </li>
 

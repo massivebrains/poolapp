@@ -1,4 +1,4 @@
-<?php include 'header.php' ?>
+<?php $this->load->view('public/header') ?>
 	<!-- PAGE TITLE
 ================================================== -->
 	<section class="pageheader-default text-center">
@@ -48,4 +48,4 @@
 		<!-- /. end call to action-->
 	</div>
 	<!-- /.wrapsemibox end-->
-	<?php include 'footer.php' ?>
+	<?php $this->load->view('public/footer') ?>

@@ -1,11 +1,14 @@
-<?php include 'tables-head.php' ?>
+<?php //var_dump($agent) ?>
+<?php //var_dump($ouser) ?>
+<?php //var_dump($summary) ?>
+<?php $this->load->view('includes/tables-head') ?>
 <body class="fixed-header ">
-	<?php include 'admin-nav.php' ?>
+<?php $this->load->view('admin/admin-nav') ?>
 
 
 	<div class="page-container ">
 
-		<?php include 'admin-header.php' ?>
+	<?php $this->load->view('admin/admin-header') ?>
 
 
 		<div class="page-content-wrapper ">
@@ -52,10 +55,10 @@
 										<div class="col-lg-12 col-md-12">
 											<div class="clearfix"></div>
 
-											<table class="table" id="dataTable">
+											<table class="table table-bordered" id="dataTable">
 												<thead>
 													<tr>
-														<td>DATE</td>
+														<td>WEEK END</td>
 														<td>WEEK NO</td>
 														<td>TOTAL STAKE</td>
 														<td>TOTAL AMOUNT WON</td>
@@ -65,16 +68,16 @@
 
 												</thead>
 												<tbody>
-													<?php for($i = 0; $i<=10; $i++){ ?>
+													<?php foreach($agent as $row): ?>
 													<tr>
-														<td>Monday 12th, July</td>
-														<td><?php echo $i; ?></td>
-														<td>&#8358; <?php echo number_format(67000); ?></td>
-														<td>&#8358; <?php echo number_format(348000); ?></td>
-														<td>&#8358; <?php echo number_format(457600); ?></td>
-														<td>&#8358; <?php echo number_format(457600); ?></td>
+														<td><?=$row['week_end'] ?></td>
+														<td><?=number_format($row['week_number']) ?></td>
+														<td>&#8358; <?=number_format($row['total_stake']) ?></td>
+														<td>&#8358; <?=number_format($row['total_amount_won']) ?></td>
+														<td>&#8358; <?=number_format($row['total_amount_lost']) ?></td>
+														<td>&#8358; <?=number_format(($row['total_amount_won'] - $row['total_amount_lost'])) ?></td>
 													</tr>
-													<?php } ?>										
+													<?php endforeach; ?>										
 												</tbody>
 											</table>
 
@@ -84,7 +87,7 @@
 								</div>
 								<!-- Veiw winners Table end -->
 							</div>
-							<div class="tab-pane slide-left active" id="ousers">
+							<div class="tab-pane slide-left" id="ousers">
 								<!-- View winners Table start -->
 								<div class="conatiner">
 									<div class="row">
@@ -92,10 +95,10 @@
 										
 											<div class="clearfix"></div>
 
-											<table class="table" id="dataTable-2">
+											<table class="table table-bordered" id="dataTable-2">
 												<thead>
 													<tr>
-														<td>DATE</td>
+														<td>WEEK END</td>
 														<td>WEEK NO</td>
 														<td>TOTAL STAKE</td>
 														<td>TOTAL AMOUNT WON</td>
@@ -105,16 +108,16 @@
 
 												</thead>
 												<tbody>
-													<?php for($i = 0; $i<=10; $i++){ ?>
+													<?php foreach($ouser as $row): ?>
 													<tr>
-														<td>Monday 12th, July</td>
-														<td><?php echo $i; ?></td>
-														<td>&#8358; <?php echo number_format(67000); ?></td>
-														<td>&#8358; <?php echo number_format(348000); ?></td>
-														<td>&#8358; <?php echo number_format(457600); ?></td>
-														<td>&#8358; <?php echo number_format(457600); ?></td>
+														<td><?=$row['week_end'] ?></td>
+														<td><?=number_format($row['week_number']) ?></td>
+														<td>&#8358; <?=number_format($row['total_stake']) ?></td>
+														<td>&#8358; <?=number_format($row['total_amount_won']) ?></td>
+														<td>&#8358; <?=number_format($row['total_amount_lost']) ?></td>
+														<td>&#8358; <?=number_format(($row['total_amount_won'] - $row['total_amount_lost'])) ?></td>
 													</tr>
-													<?php } ?>										
+													<?php endforeach; ?>											
 												</tbody>
 											</table>
 
@@ -125,7 +128,7 @@
 								<!-- Veiw Branches Table end -->
 							</div>
 
-							<div class="tab-pane slide-left active" id="general">
+							<div class="tab-pane slide-left" id="general">
 								<!-- View winners Table start -->
 								<div class="conatiner">
 									<div class="row">
@@ -133,10 +136,10 @@
 										
 											<div class="clearfix"></div>
 
-											<table class="table" id="dataTable-3">
+											<table class="table table-bordered" id="dataTable-3">
 												<thead>
 													<tr>
-														<td>DATE</td>
+														<td>WEEK END</td>
 														<td>WEEK NO</td>
 														<td>TOTAL STAKE</td>
 														<td>TOTAL AMOUNT WON</td>
@@ -146,16 +149,16 @@
 
 												</thead>
 												<tbody>
-													<?php for($i = 0; $i<=10; $i++){ ?>
+													<?php foreach($summary as $row): ?>
 													<tr>
-														<td>Monday 12th, July</td>
-														<td><?php echo $i; ?></td>
-														<td>&#8358; <?php echo number_format(67000); ?></td>
-														<td>&#8358; <?php echo number_format(348000); ?></td>
-														<td>&#8358; <?php echo number_format(457600); ?></td>
-														<td>&#8358; <?php echo number_format(457600); ?></td>
+														<td><?=$row['week_end'] ?></td>
+														<td><?=number_format($row['week_number']) ?></td>
+														<td>&#8358; <?=number_format($row['total_stake']) ?></td>
+														<td>&#8358; <?=number_format($row['total_amount_won']) ?></td>
+														<td>&#8358; <?=number_format($row['total_amount_lost']) ?></td>
+														<td>&#8358; <?=number_format(($row['total_amount_won'] - $row['total_amount_lost'])) ?></td>
 													</tr>
-													<?php } ?>										
+													<?php endforeach; ?>											
 												</tbody>
 											</table>
 											
@@ -176,10 +179,10 @@
 
 			</div>
 
-			<?php include 'footer-note.php' ?>
+			<?php $this->load->view('includes/footer-note') ?>
 
 		</div>
 
 	</div>
 
-	<?php include 'tables-footer.php' ?>
+<?php $this->load->view('includes/tables-footer') ?>

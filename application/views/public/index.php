@@ -1,4 +1,4 @@
-<?php include 'header.php' ?>
+<?php $this->load->view('public/header') ?>
 	<!-- CAROUSEL
 ================================================== -->
 	<section class="carousel carousel-fade slide home-slider" id="c-slide" data-ride="carousel" data-interval="4500" data-pause="false">
@@ -8,7 +8,7 @@
 		<li data-target="#c-slide" data-slide-to="2" class=""></li>
 	</ol>
 	<div class="carousel-inner">
-		<div class="item active" style="background: url(img/demo/bg.jpg);">
+		<div class="item active" style="background: url(<?php echo base_url() ?>assets/public/img/demo/bg.jpg);">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 fadein scaleInv anim_1">
@@ -44,22 +44,22 @@
 					<div class="col-md-6 text-center fadein scaleInv anim_2">
 						<div class="text-center">
 							<div class="fadein scaleInv anim_3">
-								<img src="img/demo/slide1-3.png" alt="" class="slide1-3 animated rollIn">
+								<img src="<?php echo base_url() ?>assets/public/img/demo/slide1-3.png" alt="" class="slide1-3 animated rollIn">
 							</div>
 							
 							<div class="fadein scaleInv anim_5">
-								<img src="img/demo/slide1-2.png" alt="" class="slide1-2 animated rollIn">
+								<img src="<?php echo base_url() ?>assets/public/img/demo/slide1-2.png" alt="" class="slide1-2 animated rollIn">
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="item" style="background: url(img/demo/slide1.jpg);">
+		<div class="item" style="background: url(<?php echo base_url() ?>assets/public/img/demo/slide1.jpg);">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 animated fadeInUp notransition">
-						<img src="img/demo/desktop3.png" alt="" style="width:90%;">
+						<img src="<?php echo base_url() ?>assets/public/img/demo/desktop3.png" alt="" style="width:90%;">
 					</div>
 					<div class="col-md-6 animated fadeInDown  notransition topspace30 text-right">
 						<div class="car-highlight1 animated fadeInLeftBig">
@@ -93,7 +93,7 @@
 	<!-- /.wrapsemibox start-->
 	<div class="wrapsemibox">
 		<div class="semiboxshadow text-center">
-			<img src="img/shp.png" class="img-responsive" alt="">
+			<img src="<?php echo base_url() ?>assets/public/img/shp.png" class="img-responsive" alt="">
 		</div>
 		<!-- INTRO NOTE
 ================================================== -->
@@ -180,13 +180,13 @@
 							</ol>
 							<div class="carousel-inner" style="margin-top:-20px;">
 								<div class="item active">
-									<img src="img/demo/desktop3.png" alt="">
+									<img src="<?php echo base_url() ?>assets/public/img/demo/desktop3.png" alt="">
 								</div>
 								<div class="item">
-									<img src="img/demo/desktop3.png" alt="">
+									<img src="<?php echo base_url() ?>assets/public/img/demo/desktop3.png" alt="">
 								</div>
 								<div class="item">
-									<img src="img/demo/desktop3.png" alt="">
+									<img src="<?php echo base_url() ?>assets/public/img/demo/desktop3.png" alt="">
 								</div>
 							</div>
 							<!-- /.carousel-inner -->
@@ -250,4 +250,4 @@
 		<!-- /. end call to action-->
 	</div>
 	<!-- /.wrapsemibox end-->
-<?php include 'footer.php' ?>
+<?php $this->load->view('public/footer') ?>

@@ -9,7 +9,7 @@ class Agent extends CI_Controller
 		parent::__construct();
 		if ($this->session->user_id == 0)
 		{
-			redirect('auth/index/agent', 'refresh');
+			redirect('auth/index/admin', 'refresh');
 		}
 		$this->load->model('admin_agent_model');
 		$this->load->model('admin_branch_model');
