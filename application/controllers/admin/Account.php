@@ -11,7 +11,6 @@ class Account extends CI_Controller
 		{
 			redirect('auth/index/admin', 'refresh');
 		}
-		$this->load->model('admin_game_model');
 		$this->load->model('account_model');
 	}
 	
@@ -62,7 +61,16 @@ class Account extends CI_Controller
 		$this->load->view('admin/admin-sales-summary', $data);
 	}
 
+	public function get_credits()
+	{
+		$data['credits'] = $this->account_model->get_ouser_account('credit');
+		$this->load->view('admin/admin-account-credit', $data);
+	}
 
-
+	public function get_withdrawals()
+	{
+		$data['withdrawals'] = $this->account_model->get_ouser_account('withdrawal');
+		$this->load->view('admin/admin-account-withdrawals', $data);
+	}
 	
 }

@@ -16,7 +16,7 @@
 					<div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
 						<div class="inner">
 
-							<marquee behavior="alternate" direction="">All Agents are expected to submit 50liters of petrol to the programmer on or before his birthday. else they wont be able to play. MGNT.</marquee>
+							<marquee behavior="alternate" direction=""><?=$notification; ?></marquee>
 
 						</div>
 					</div>

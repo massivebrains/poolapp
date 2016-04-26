@@ -86,4 +86,33 @@ class Account_model extends CI_Model
 		$result = $query->result();
 		return $result[0]->sum;
 	}
+
+	public function get_top_withdrawals()
+	{
+		$query = $this->db->limit(10);
+		$query = $this->db->order_by('id', 'DESC');
+		$query = $this->db->get('withdrawal_requests');
+		return $query->result();
+	}
+
+	public function all_withdrawals()
+	{
+		$query = $this->db->get('withdrawal_requests');
+		return $query->result();
+	}
+
+	public function get_ouser_account($operation = 'credit')
+	{
+		$query = $this->db->order_by('created', 'DESC');
+		$query = $this->db->get_where('ouser_account', array('operation'=>$operation));
+		return $query->result();
+	}
+
+	public function get_withdrawal_sum()
+	{
+		$query = $this->db->select_sum('amount', 'sum');
+		$query = $this->db->get('withdrawal_requests');
+		$result = $query->result();
+		return $result[0]->sum;
+	}
 }

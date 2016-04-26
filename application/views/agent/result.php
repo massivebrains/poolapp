@@ -43,7 +43,7 @@
 
 				</div>
 			<?php endforeach; ?>
-			<a href="<?=site_url('agent/index') ?>">Back</a>
+			<a href="<?=site_url('agent/index/agent_interface') ?>">Back</a>
 		</div>
 	</div>
 </body>

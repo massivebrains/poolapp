@@ -11,7 +11,6 @@ class Agent extends CI_Controller
 		{
 			redirect('auth/index/admin', 'refresh');
 		}
-		$this->load->model('admin_agent_model');
 		$this->load->model('admin_branch_model');
 	}
 	
@@ -22,6 +21,7 @@ class Agent extends CI_Controller
 		
 		if ($data['agents'] = $this->admin_agent_model->read())
 		{
+			$data['week_number'] = $this->admin_game_model->get_current_week();
 			$this->load->view('admin/admin-agent', $data);
 		}
 		else
@@ -112,6 +112,34 @@ class Agent extends CI_Controller
 	public function get_agent_count()
 	{
 		return $this->admin_agent_model->get_agent_count();
+	}
+
+	public function suspend($agent_id = 0)
+	{
+		if ($this->admin_agent_model->suspend($agent_id))
+		{
+			$this->session->set_flashdata('message', 'Agent Suspended Succefully - Barred from Logging In');
+			$this->index();
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
+			$this->index();
+		}
+	}
+
+	public function activate($agent_id = 0)
+	{
+		if ($this->admin_agent_model->activate($agent_id))
+		{
+			$this->session->set_flashdata('message', 'Agent activated succesfully');
+			$this->index();
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
+			$this->index();
+		}
 	}
 
 }

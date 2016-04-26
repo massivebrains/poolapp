@@ -13,7 +13,7 @@
 
         <ul class="menu-items">
             <li class="">
-                <a href="<?=site_url('agent/index') ?>" class="detailed">
+                <a href="<?=site_url('agent/index/agent_interface') ?>" class="detailed">
                     <span class="title">Dashboard</span>
                 </a>
                 <span class="icon-thumbnail">D</span>

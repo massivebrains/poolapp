@@ -59,8 +59,17 @@ class Auth extends CI_Controller
 		{
 			if ($user_id = $this->auth_model->agent_login())
 			{
-				$this->session->set_userdata('user_id', $user_id);
-				redirect('agent/index/index', 'refresh');
+				if($this->auth_model->check_agent_stauts($user_id) == 0)
+				{
+					$this->session->set_flashdata('message', 'You have been barred from logging In.');
+					$this->load->view('auth/agent-login');
+				}
+				else
+				{
+					$this->session->set_userdata('user_id', $user_id);
+					redirect('agent/index/agent_interface', 'refresh');
+				}
+				
 			}
 			else
 			{
@@ -71,7 +80,7 @@ class Auth extends CI_Controller
 		
 	}
 
-/* *************************** ONLINE USERS ************************************************** */
+	/* *************************** ONLINE USERS ************************************************** */
 	public function ouser_index(){
 		$this->load->view('public/login');
 	}
@@ -128,7 +137,7 @@ class Auth extends CI_Controller
 		}
 	}
 
-/************* END OF ONLINE USERS *************************** */
+	/************* END OF ONLINE USERS *************************** */
 	public function logout($user = 'agent')
 	{
 		unset($_SESSION['user_id']);

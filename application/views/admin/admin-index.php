@@ -1,4 +1,4 @@
-
+<?php //var_dump($withdrawals); ?>
 <?php $this->load->view('includes/head') ?>
 <body class="fixed-header dashboard">
 	<?php $this->load->view('admin/admin-nav') ?>

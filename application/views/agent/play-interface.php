@@ -99,13 +99,12 @@
 
 					<div class="form-group form-group-default">
 						<label>STAKE</label>
-						<input type="number" name="stake" ng-model="stake" id="stake" class="form-control" placeholder="&#8358;" style="-moz-appearance:textfield" required>
+						<input type="number" min="100" name="stake" ng-model="stake" id="stake" class="form-control" placeholder="&#8358;" style="-moz-appearance:textfield" required>
 					</div>
 					<div class="">
 						<label>ODD TYPE:</label>&nbsp;
-						Default&nbsp;<input type="radio" ng-model="odd" value="default" id="default" checked>&nbsp;&nbsp;
-						80&nbsp;<input type="radio" ng-model="odd" value="eighty" id="eighty">&nbsp;&nbsp;
-						60&nbsp;<input type="radio" ng-model="odd" value="sixty" id="sixty">
+						<?=$odd1 ?>&nbsp;<input type="radio" ng-model="odd" value="<?=$odd1 ?>" id="<?=$odd1 ?>">&nbsp;&nbsp;
+						<?=$odd2 ?>&nbsp;<input type="radio" ng-model="odd" value="<?=$odd2 ?>" id="<?=$odd2 ?>">
 					</div>
 
 					<div class="">

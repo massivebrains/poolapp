@@ -13,18 +13,28 @@ class Index extends CI_Controller
 			redirect('auth/index/agent', 'refresh');
 		}
 		$this->load->model('agent_model');
-		$this->load->model('admin_game_model');
 	}
 
 	public function index()
 	{
-		$this->load->view('agent/agent-index');
+		$data['notification'] = $this->agent_model->get_notification();
+		$this->load->view('agent/agent-index', $data);
 	}
 
 
 	public function view($page = 'agent-index')
 	{
 		$this->load->view('agent/'.$page);
+	}
+
+	public function agent_interface()
+	{
+		$data['notification'] = $this->agent_model->get_notification();
+		$odds = $this->agent_model->get_agent_odds();
+		$odds = explode(',', $odds);
+		$data['odd1'] = $odds[0];
+		$data['odd2'] = $odds[1];
+		$this->load->view('agent/agent-index', $data);
 	}
 
 	public function view_result()
@@ -45,5 +55,11 @@ class Index extends CI_Controller
 		//var_dump($data);
 		echo number_format($data[0]->sum);
 	}
-	
+
+	public function watch()
+	{
+		$data = $this->agent_model->watch($this->admin_game_model->get_current_week());
+		echo implode(',', $data);
+		
+	}
 }

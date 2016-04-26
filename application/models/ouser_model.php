@@ -63,6 +63,20 @@ class Ouser_model extends CI_Model
 		}
 	}
 
+	public function get_username($user_id = 0)
+	{
+		$query = $this->db->get_where('ousers', array('ouser_id'=>$user_id));
+		if($query->num_rows() < 1)
+		{
+			return ' ';
+		}
+		else
+		{
+			$row = $query->row();
+			return $row->ouser_surname.' '.$row->ouser_firstname;
+		}
+	}
+
 
 	public function edit($id = NULL)
 	{
@@ -110,6 +124,28 @@ class Ouser_model extends CI_Model
 		$query = $this->db->get_where('coupons', array('player'=>'ouser', 'player_id'=>$this->session->user_id, 'status !='=>'pending'));
 
 		return $query->result();
+	}
+
+	public function post_withdrawal()
+	{
+		
+		$data = array(
+			'ouser_id' => $this->session->user_id,
+			'bank_name' => $this->input->post('bank_name'),
+			'account_name' => $this->input->post('account_name'),
+			'account_number' => $this->input->post('account_number'),
+			'account_type' => $this->input->post('account_type'),
+			'amount' => $this->input->post('amount'),
+			'created' => date('Y-m-d H:i:s')
+			);
+		if ($this->db->insert('withdrawal_requests', $data))
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
 	}
 
 }

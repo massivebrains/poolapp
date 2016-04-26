@@ -15,6 +15,7 @@ class Ouser extends CI_Controller
 		$this->load->model('ouser_model');
 		$this->load->model('game_model');
 		$this->load->model('admin_game_model');
+		$this->load->model('admin_model');
 	}
 
 	public function index()
@@ -105,13 +106,31 @@ class Ouser extends CI_Controller
 		$this->load->view('public/history', $data);
 	}
 
-	public function recharge()
+	public function post_withdrawal()
 	{
-		$this->load->view('public/recharge');
-	}
-
-	public function withdraw()
-	{
-		$this->load->view('public/withdraw');
+		$this->form_validation->set_error_delimiters('<span class="span span-important">', '</span>');
+		$this->form_validation->set_rules('bank_name', 'Bank Name', 'required');
+		$this->form_validation->set_rules('account_name', 'Account Name', 'required');
+		$this->form_validation->set_rules('account_number', 'Account Number', 'required');
+		$this->form_validation->set_rules('account_type', 'Account Type', 'required');
+		$this->form_validation->set_rules('amount', 'Amount', 'required');
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->view('withdraw');
+		}
+		else
+		{
+			//Check if the user has as much as what he/she wants to withdraw
+			if ($this->ouser_model->post_withdrawal())
+			{
+				$this->session->set_flashdata('message', 'Your withdrawal request has been posted succesfully');
+				$this->view('withdraw');
+			}
+			else
+			{
+				$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
+				$this->view('withdraw');
+			}
+		}
 	}
 }

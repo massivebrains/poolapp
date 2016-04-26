@@ -19,7 +19,7 @@ app.controller("ouserCtrl", function($scope, $http, $location)
         }
         else
         {
-            if (stake == '')
+            if (stake < 100)
             {
                 $('#submit').prop('disabled', true);
             }

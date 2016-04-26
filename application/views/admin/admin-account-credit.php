@@ -1,11 +1,11 @@
-<?php include 'tables-head.php' ?>
+<?php $this->load->view('includes/tables-head') ?>
 <body class="fixed-header ">
-	<?php include 'admin-nav.php' ?>
+<?php $this->load->view('admin/admin-nav') ?>
 
 
 	<div class="page-container ">
 
-		<?php include 'admin-header.php' ?>
+	<?php $this->load->view('admin/admin-header') ?>
 
 
 		<div class="page-content-wrapper ">
@@ -51,7 +51,6 @@
 												<thead>
 													<tr>
 														<td>DATE</td>
-														<td>TIME</td>
 														<td>USER</td>
 														<td>PAYER</td>
 														<td>AMOUNT</td>
@@ -59,15 +58,14 @@
 
 												</thead>
 												<tbody>
-													<?php for($i = 0; $i<=10; $i++){ ?>
+													<?php foreach($credits as $row): ?>
 													<tr>
-														<td>Monday 12th, July</td>
-														<td>1:30pm</td>
-														<td>OLAIYA SEGUN</td>
-														<td>MR VICTOR JOHNSON</td>
-														<td>&#8358; <?php echo number_format(4500); ?></td>
+														<td><?=$row->created ?></td>
+														<td><?=strtoupper($this->ouser_model->get_username($row->ouser_id)) ?></td>
+														<td><?=strtoupper($this->admin_model->get_name($row->admin_id)) ?></td>
+														<td>&#8358; <?=number_format($row->amount); ?></td>
 													</tr>
-													<?php } ?>										
+													<?php endforeach; ?>										
 												</tbody>
 											</table>
 
@@ -91,10 +89,10 @@
 
 			</div>
 
-			<?php include 'footer-note.php' ?>
+			<?php $this->load->view('includes/footer-note') ?>
 
 		</div>
 
 	</div>
 
-	<?php include 'tables-footer.php' ?>
+	<?php $this->load->view('includes/tables-footer') ?>

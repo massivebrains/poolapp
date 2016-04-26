@@ -10,7 +10,6 @@ class Mark extends CI_Controller
 		parent::__construct();
 		$this->load->model('odd_model');
 		$this->load->model('mark_model');
-		$this->load->model('admin_game_model');
 	}
 		
 	public function index()
@@ -33,8 +32,8 @@ class Mark extends CI_Controller
 
 	public function get_current_week_result_count()
 	{
-		$current_result = explode(',', $result);
-		return sizeof($current_result);
+		$this_week_result = explode(',', $this->admin_game_model->get_current_week_result());
+		return sizeof($this_week_result);
 	}
 
 	public function get_game_count($game)
@@ -43,6 +42,7 @@ class Mark extends CI_Controller
 		return sizeof($games);
 	}
 
+	
 	public function get_wining_numbers_count($game = '')
 	{
 		$this_week_result = explode(',', $this->admin_game_model->get_current_week_result());
@@ -70,14 +70,14 @@ class Mark extends CI_Controller
 			$stake_line = $this->combination($games_count);
 			$winning_numbers = $this->get_wining_numbers_count($game);
 			$winning_line = $this->combination($winning_numbers);
-			$odd_range = $this->odd_model->get_range($odd, $games_count);
-			$money = ($stake / $stake_line) * $winning_line * $odd_range;
-			/*echo 'games count: '.$games_count.'<br>';
+			$odd = $this->odd_model->get($odd, $this->get_current_week_result_count());
+			$money = ($stake / $stake_line) * $winning_line * $odd;
+			echo 'games count: '.$games_count.'<br>';
 			echo 'stake line: '.$stake_line.'<br>';
 			echo 'winning numbers count: '.$winning_numbers.'<br>';
 			echo 'winning line: '.$winning_line.'<br>';
-			echo 'odd_range: '.$odd_range.'<br>';
-			echo 'money: '.$money.'<br><br><br>';*/
+			echo 'odd_range: '.$odd.'<br>';
+			echo 'win amount: '.$money.'<br><br><br>';
 		}
 		else
 		{

@@ -11,7 +11,6 @@ class Game extends CI_Controller
 		{
 			redirect('auth/index/admin', 'refresh');
 		}
-		$this->load->model('admin_game_model');
 	}
 	
 

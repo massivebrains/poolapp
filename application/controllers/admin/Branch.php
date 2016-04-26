@@ -34,22 +34,51 @@ class Branch extends CI_Controller
 	{
 		$this->form_validation->set_error_delimiters('<span class="span span-important">', '</span>');
 		$this->form_validation->set_rules('branch_name', 'Branch Name', 'required');
+		$this->form_validation->set_rules('odd_type', 'Odd Type', 'required');
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->index();
 		}
 		else
 		{
-			if ($this->admin_branch_model->create())
+			$data = $this->input->post('odd_type');
+			/*foreach($data[] as $char)
 			{
-				$this->session->set_flashdata('message', 'Record Added Successfully.');
+				echo $char;
+			}*/
+			$data = explode(',',$data);
+			sort($data);
+			$data = array_unique($data);
+			$check = 0;
+			foreach($data as $char)
+			{
+				if (!is_numeric($char) || ($char < 1) || ($char >100 ))
+				{
+					$check = 1;
+				}
+			}
+			$data = implode(',' , $data);
+			if($check == 1)
+			{
+				$this->session->set_flashdata('result', 'Some of the inputs to the odd type are not valid.');
 				$this->index();
 			}
 			else
 			{
-				$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
-				$this->index();
+				if ($this->admin_branch_model->create($data))
+				{
+					$this->session->set_flashdata('message', 'Record Added Successfully.');
+					$this->index();
+				}
+				else
+				{
+					$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
+					$this->index();
+				}
 			}
+
+
+			
 		}
 	}
 
@@ -106,4 +135,32 @@ class Branch extends CI_Controller
 		return $this->admin_branch_model->get_branch_count();
 	}
 
+
+	public function suspend($branch_id = 0)
+	{
+		if ($this->admin_branch_model->suspend($branch_id))
+		{
+			$this->session->set_flashdata('message', 'Branch Suspended Succesfully. All corresponding agents are barred from logging in.');
+			$this->index();
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
+			$this->index();
+		}
+	}
+
+	public function activate($branch_id = 0)
+	{
+		if ($this->admin_branch_model->activate($branch_id))
+		{
+			$this->session->set_flashdata('message', 'Branch activated succesfully');
+			$this->index();
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
+			$this->index();
+		}
+	}
 }

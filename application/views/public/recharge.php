@@ -16,40 +16,43 @@
 		<section class="container">
 		
 		<div class="row">
-			<div class="col-sm-2 col-lg-2 col-md-2">
 				<?php $this->load->view('public/user-nav') ?>
-			</div>
 
 			<div class="col-sm-10 col-lg-10 col-md-10">
 				<div class="panel panel-default">
 					<div class="panel-body">
-					<p>
-			After paying to the company's account, You can request for a recharge with the form below
-		</p>
-						<form action="" method="POST" role="form">
-							<legend>Recharge</legend>
-						
-							<div class="form-group">
-								<label for="">Teller Number</label>
-								<input type="number" class="form-control" id="">
-							</div>
-							<div class="form-group">
-								<label for="">Amount Paid</label>
-								<input type="number" class="form-control" id="" >
-							</div>
-							<div class="form-group">
-								<label for="">Date Paid</label>
-								<input type="date" class="form-control" id="">
-							</div>
-							<div class="form-group">
-								<label for="">Account Number</label>
-								<input type="number" class="form-control" id="" value="vadeshayo@gmail.com">
-							</div>
-						
-							
-						
-							<button type="submit" class="btn btn-primary btn-sm">Recharge</button>
-						</form>
+						<table class="table table-condensed">
+							<tr>
+								<td><strong>BANK NAME:</strong></td>
+								<td>FIRST BANK OF NIGERIA</td>
+							</tr>
+							<tr>
+								<td><strong>BANK ACCOUNT NAME:</strong></td>
+								<td>TACTIC ENTERPRISE</td>
+							</tr>
+							<tr>
+								<td><strong>BANK ACCOUNT NUMBER:</strong></td>
+								<td>0123011429</td>
+							</tr>
+							<tr>
+								<td colspan="2"><em>or...</em></td>
+							</tr>
+							<tr>
+								<td><strong>BANK NAME:</strong></td>
+								<td>ZENITH BANK</td>
+							</tr>
+							<tr>
+								<td><strong>BANK ACCOUNT NAME:</strong></td>
+								<td>TACTIC ENTERPRISE</td>
+							</tr>
+							<tr>
+								<td><strong>BANK ACCOUNT NUMBER:</strong></td>
+								<td>30857474748</td>
+							</tr>
+							<tr>
+								<td colspan="2"><em>Use your username to deposit to company account (i.e your full name). Send username and amount deposited to 08175020329</em></td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>

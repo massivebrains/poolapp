@@ -15,7 +15,7 @@
 		<!-- ABOUT
 		================================================== -->
 		<section class="container">
-			<h5 class="pull-right">Balance: &#8358; 7600</h5>
+			<h5 class="pull-right">Balance: &#8358; <?php echo number_format($this->admin_model->ouser_account_balance($this->session->user_id)); ?></h5>
 			<div class="row">
 				<?php $this->load->view('public/user-nav') ?>
 

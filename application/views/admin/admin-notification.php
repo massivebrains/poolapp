@@ -1,11 +1,11 @@
-<?php include 'tables-head.php' ?>
+<?php $this->load->view('includes/tables-head') ?>
 <body class="fixed-header ">
-	<?php include 'admin-nav.php' ?>
+<?php $this->load->view('admin/admin-nav') ?>
 
 
 	<div class="page-container ">
 
-		<?php include 'admin-header.php' ?>
+<?php $this->load->view('admin/admin-header') ?>
 
 
 		<div class="page-content-wrapper ">
@@ -33,11 +33,9 @@
 
 						<ul class="nav nav-tabs nav-tabs-linetriangle" data-init-reponsive-tabs="dropdownfx">
 							<li class="active">
-								<a data-toggle="tab" href="#branches"><span>Notifications</span></a>
+								<a data-toggle="tab" href="#branches"><span>Notification</span></a>
 							</li>
-							<li>
-								<a data-toggle="tab" href="#add"><span>Add New</span></a>
-							</li>
+							
 						</ul>
 
 						<div class="tab-content">
@@ -46,57 +44,18 @@
 								<div class="conatiner">
 									<div class="row">
 										<div class="col-lg-12 col-md-12">
-											<div class="pull-right">
-												<div class="col-xs-12">
-													<input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
-												</div>
-											</div>
+											
 											<div class="clearfix"></div>
-
-											<table class="table demo-table-search" id="tableWithSearch">
-												<thead>
-													<tr>
-														<td>S/NO</td>
-														<td>NOTIFICATION</td>
-														<td>ACTION</td>
-													</tr>
-
-												</thead>
-												<tbody>
-													<?php for($i = 0; $i<=10; $i++){ ?>
-													<tr>
-														<td><?php echo $i; ?></td>
-														<td>
-														Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-														tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-														quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-														consequat. 
-														</td>
-														<td>
-															<a class="btn btn-danger btn-sm ">
-																<i class="fs-14 pg-close"></i> 
-																<span class="bold">Delete</span>
-															</a>
-														</td>
-													</tr>
-													<?php } ?>										
-												</tbody>
-											</table>
-										</div>
-
-									</div>
-								</div>
-								<!-- Veiw Branches Table end -->
-							</div>
-							<div class="tab-pane slide-left" id="add">
-								<div class="row">
-									<div class="col-md-3"></div>
-									<div class="col-md-6">
-										
-										<form role="form">
+											<?=$this->session->flashdata('message'); ?>
+											<form role="form"change_notifcation method="post" action="<?=site_url('admin/admin/change_notifcation') ?>">
 											<div class="form-group">
 												<label>New Notification</label>
-												<textarea name="notification" cols="4" rows="4" class="form-control" required></textarea>
+												<textarea cols="4" rows="4" class="form-control" required name="notification"></textarea>
+												<?php  $csrf = array(
+												'name' => $this->security->get_csrf_token_name(),
+												'hash' => $this->security->get_csrf_hash());
+											 ?>
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 											</div>
 
 											<div class="form-group">
@@ -104,11 +63,13 @@
 											</div>
 											
 										</form>
+										</div>
 
 									</div>
-									<div class="col-md-3"></div>
 								</div>
+								<!-- Veiw Branches Table end -->
 							</div>
+							
 						</div>
 					</div>
 
@@ -118,10 +79,10 @@
 
 			</div>
 
-			<?php include 'footer-note.php' ?>
+			<?php $this->load->view('includes/footer-note') ?>
 
 		</div>
 
 	</div>
 
-	<?php include 'tables-footer.php' ?>
+<?php $this->load->view('includes/tables-footer') ?>

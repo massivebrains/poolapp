@@ -58,7 +58,8 @@
 														<td>AGENT ID</td>
 														<td>AGENT NAME</td>
 														<td>AGENT BRANCH</td>
-														<td>ACCOUNT BALANCE</td>
+														<td>BRANCH ODD TYPE</td>
+														<td>TOTAL STAKE THIS WEEK</td>
 														<td>ACTION</td>
 													</tr>
 
@@ -73,18 +74,20 @@
 																<td><?=$row->agent_phone; ?></td>
 																<td><?=$row->agent_name;?></td>
 																<td><?=$this->admin_branch_model->branch_field($row->branch_id, 'branch_name'); ?></td>
-																<td>&#8358; 0000000<?php //echo number_format(5600000); ?></td>
+																<td><?=$this->admin_branch_model->branch_field($row->branch_id, 'odd_type'); ?></td>
+																<td>&#8358; <?=$this->admin_model->get_agent_total_stake($week_number, $row->agent_id); ?></td>
 																<td>
-																	<div class="btn-sm  dropdown"> 
-																		<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"> Actions 
-																			<span class="caret"></span>&nbsp;
-																		</a>
-																		<ul class="dropdown-menu">
-																			<li><a href="#">Suspend</a></li>
-																			<li><a href="#">View History</a></li>
-																			<li><a href="#">Deactivate</a></li>
-																		</ul>
-																	</div>
+																<?php if($row->agent_status == 'active'){ ?>
+																	<a href="<?=site_url('admin/agent/suspend/'.$row->agent_id) ?>" class="btn btn-danger btn-sm">
+																		<i class="fs-14 pg-close"></i> 
+																		<span class="bold">Suspend</span>
+																	</a>
+																<?php }else{ ?>
+																<a href="<?=site_url('admin/agent/activate/'.$row->agent_id) ?>" class="btn btn-success btn-sm">
+																		<i class="fs-14 pg-plus"></i> 
+																		<span class="bold">Activate</span>
+																	</a>
+																	<?php } ?>
 																</td>
 															</tr>
 														<?php endforeach; ?>

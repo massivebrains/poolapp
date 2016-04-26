@@ -15,7 +15,11 @@
 		================================================== -->
 		<section class="container">
 			<?=validation_errors(); ?>
-			<?=$this->session->flashdata('message'); ?>
+			<?php if($this->session->flashdata('message') != ''): ?>
+			<div class="alert alert-danger">
+				<?=$this->session->flashdata('message'); ?>
+			</div>
+		<?php endif; ?>
 			<div class="boxportfolio2 col-lg-6 col-sm-6">
 				<h1 class="smalltitle">
 					<span>Login to your account</span>

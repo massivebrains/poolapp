@@ -36,13 +36,10 @@
 				</tbody>
 			</table>
 			<form action="#">
-				<input type="text" ng-model="stake" class="form-control" id="stake" name="amount" placeholder="amount">
+				<input type="text" ng-model="stake" class="form-control" id="stake" name="amount" placeholder="minimum is N100">
 				<div class="">
-						<label>ODD TYPE:</label>&nbsp;
-						Default&nbsp;<input type="radio" ng-model="odd" value="default" id="default" checked>&nbsp;&nbsp;
-						80&nbsp;<input type="radio" ng-model="odd" value="eighty" id="eighty">&nbsp;&nbsp;
-						60&nbsp;<input type="radio" ng-model="odd" value="sixty" id="sixty">
-					</div>
+						
+						<input type="hidden" ng-model="odd" value="default">
 				<input type="button" ng-click="reset($event)" value="RESET" class="btn btn-success btn-sm">
 				<input type="submit" ng-click="submit($event)" id="submit" value="BET" class="btn btn-danger btn-sm">
 			</form>

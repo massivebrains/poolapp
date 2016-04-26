@@ -23,10 +23,11 @@ class Admin_branch_model extends CI_Model
 	}
 
 
-	public function create()
+	public function create($data)
 	{
 		$data = array(
 			'branch_name' => $this->input->post('branch_name'),
+			'odd_type' => $data,
 			'created' => date('Y-m-d H:i:s')
 			);
 		if($this->db->insert('branches', $data))
@@ -88,6 +89,22 @@ class Admin_branch_model extends CI_Model
             return $row->$field;
         }
 
+    }
+
+    public function suspend($branch_id = 0)
+    {
+    	$data = array('branch_status'=>'inactive');
+    	$query = $this->db->where('branch_id', $branch_id);
+    	$query = $this->db->update('branches', $data);
+    	return TRUE;
+    }
+
+    public function activate($branch_id = 0)
+    {
+    	$data = array('branch_status'=>'active');
+    	$query = $this->db->where('branch_id', $branch_id);
+    	$query = $this->db->update('branches', $data);
+    	return TRUE;
     }
 
 }

@@ -12,7 +12,6 @@ class Game extends CI_Controller
 			redirect('auth/index/admin', 'refresh');
 		}
 		$this->load->model('game_model');
-		$this->load->model('admin_game_model');
 	}
 
 	public function post($game = NULL, $stake = NULL, $odd = NULL)

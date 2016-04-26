@@ -31,7 +31,7 @@ app.controller("gameCtrl", function($scope, $http)
    /* ******************************************************** END OF ADMIN FUNCTINOS ************************ */
 
    /* ************************************************ AGENT FUNCTIONS ************************************ */
-   $scope.odd = 'default';
+   $scope.odd = '0';
 
    $scope.totalStake = 0;
    setInterval(function()
@@ -45,7 +45,30 @@ app.controller("gameCtrl", function($scope, $http)
         {
             console.log(response.data);
         });
-   },5000);
+
+    },20000);
+
+    $scope.watch = function()
+    {
+        $http.get(site_url+'agent/index/watch')
+        .then(function successCallback(response) 
+        {
+            check = response.data;
+            check = check.split(',');
+             //console.log(check);
+            for(i = 0; i< check.length; i++)
+            {
+                $('#n'+check[i]).prop('disabled', true);
+            }
+        }, function errorCallback(response) 
+        {
+            console.log(response.data);
+        });
+    }
+
+   setInterval(function(){
+        $scope.watch();
+    },20000);
 
    $scope.start = function()
    {
@@ -61,7 +84,7 @@ app.controller("gameCtrl", function($scope, $http)
         else
         {
             $('#submit').addClass('btn-warning');
-            if (stake == '')
+            if (stake < 100)
             {
                 $('#submit').prop('disabled', true);
             }
@@ -70,7 +93,7 @@ app.controller("gameCtrl", function($scope, $http)
                 $('#submit').removeClass('btn-warning').addClass('btn-success');
                 $('#submit').prop('disabled', false);
             }
-        } 
+        };
     }, 1500);        
     for (i = 1; i<=49; i++)
     {
@@ -78,6 +101,7 @@ app.controller("gameCtrl", function($scope, $http)
         if (current.prop('disabled') == true)
             $('#n'+i).prop('disabled', false);
     }
+    $scope.watch();
 };
 
 
@@ -85,7 +109,6 @@ app.controller("gameCtrl", function($scope, $http)
 $scope.selectNumber = function(number)
 {
         //console.log(number);
-        $('#n'+number).removeClass('btn-black').addClass('btn-danger');
         $('#n'+number).prop('disabled', true);
         $('#choosen').append('<button class="btn btn-sm btn-danger" style="margin:5px;" id="'+number+'">'+number+'</button>');
         $scope.games.push(number);
@@ -101,7 +124,7 @@ $scope.selectNumber = function(number)
     {
         $event.preventDefault();
         $('#choosen').html('');
-        $('#submit').prop('disabled', true).removeClass('btn-warning').removeClass('btn-success');
+        $('#submit').prop('disabled', true);
         $('#stake').val('');
         $scope.games = [];
         for (i = 1; i<=49; i++)
@@ -110,11 +133,12 @@ $scope.selectNumber = function(number)
             if (current.prop('disabled') == true)
                 $('#n'+i).removeClass('btn-danger').addClass('btn-black').prop('disabled', false);
         }
+        $scope.watch();
     }
 
     $scope.submit = function($event)
     {
-        
+
         $event.preventDefault();
         $scope.games.sort($scope.sortNumber);
         var game = $scope.games.toString();
@@ -139,7 +163,7 @@ $scope.selectNumber = function(number)
             current = $('#n'+i);
             if (current.prop('disabled') == true)
             {
-                $('#n'+i).removeClass('btn-danger').addClass('btn-black').prop('disabled', false);
+                $('#n'+i).prop('disabled', false);
             }
         }
         $scope.games = [];
@@ -147,6 +171,7 @@ $scope.selectNumber = function(number)
         toastr.options = {timeOut:3000};
         $('#submit').removeClass('btn-success');
         toastr.info('Game Played Successfully');
+        $scope.watch();
 
     };
 

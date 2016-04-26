@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Odd_model extends CI_Model 
+class Odd_model extends CI_Model  
 {
 
 	public function __construct()
@@ -10,20 +10,48 @@ class Odd_model extends CI_Model
 	}
 
 
-	public function get_range($type = NULL, $games_count = NULL)
+	public function get($type = NULL, $result_count = 0)
 	{
 		switch ($type)
 		{
 			case ($type == 'default'):
-				return $this->default_range($games_count);
+				return $this->default_range($result_count);
 			break;
 
-			case ($type == 'eighty'):
-				return $this->eighty();
+			case ($type == '90'):
+				return 90;
 			break;
 
-			case ($type == 'sixty'):
-				return $this->sixty();
+			case ($type == '80'):
+				return 80;
+			break;
+
+			case ($type == '70'):
+				return 70;
+			break;
+
+			case ($type == '60'):
+				return 60;
+			break;
+
+			case ($type == '50'):
+				return 50;
+			break;
+
+			case ($type == '40'):
+				return 40;
+			break;
+
+			case ($type == '30'):
+				return 30;
+			break;
+
+			case ($type == '20'):
+				return 20;
+			break;
+
+			case ($type == '10'):
+				return 10;
 			break;
 
 			default:
@@ -33,34 +61,34 @@ class Odd_model extends CI_Model
 	}
 
 
-	public function default_range($games = NULL)
+	public function default_range($result = NULL)
 	{
 		$odd = 0;
-		if($games == NULL || $games < 1)
+		if($result == NULL || $result < 1)
 		{
 			$odd = 0;
 		}
 		else
 		{
-			switch ($games)
+			switch ($result)
 			{
-				case (($games>=1) && ($games <=10)):
+				case (($result>=1) && ($result <=10)):
 					$odd = 100;
 				break;
 
-				case (($games>=11) && ($games <=12)):
+				case (($result>=11) && ($result <=12)):
 					$odd = 80;
 				break;
 
-				case (($games>=13) && ($games <=14)):
+				case (($result>=13) && ($result <=14)):
 					$odd = 60;
 				break;
 
-				case (($games>=15) && ($games <=16)):
+				case (($result>=15) && ($result <=16)):
 					$odd = 40;
 				break;
 
-				case (($games>=16) && ($games <=49)):
+				case (($result>=16) && ($result <=49)):
 					$odd = 30;
 				break;
 				
@@ -71,15 +99,5 @@ class Odd_model extends CI_Model
 		}
 		return $odd;
 	}
-
-
-public function eighty(){
-	return 80;
-}
-
-public function sixty()
-{
-	return 60;
-}
 
 }

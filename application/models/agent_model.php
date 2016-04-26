@@ -26,6 +26,15 @@ class Agent_model extends CI_Model
 		}
 	}
 
+	public function get_agent_odds()
+	{
+		$query = $this->db->get_where('agents', array('agent_id'=>$this->session->user_id));
+		$branch_id = $query->row()->branch_id;
+		$query = $this->db->get_where('branches', array('branch_id'=>$branch_id));
+		$row = $query->row();
+		return $row->odd_type;
+	}
+
 	public function get_total_stake($week_number)
 	{
 		$query = $this->db->select_sum('stake', 'sum');
@@ -40,5 +49,33 @@ class Agent_model extends CI_Model
 		return $query->result();
 	}
 
+	public function get_notification()
+	{
+		$query = $this->db->get_where('notification', array('id'=>1));
+		$row = $query->row();
+		return $row->notification;
+	}
+
+
+	public function watch($week_number = 0)
+	{
+		$numbers  = [];
+		$query = $this->db->get_where('games', array('week_number'=>$week_number));
+		$result = $query->result();
+		foreach($result as $row)
+		{
+			if($row->status == 'inactive')
+			{
+				array_push($numbers, $row->number);
+
+			}
+			if($row->deadline < date('Y-m-d G:i:s'))
+			{
+				array_push($numbers, $row->number);
+			}
+		}
+		
+		return $numbers;
+	}
 
 }

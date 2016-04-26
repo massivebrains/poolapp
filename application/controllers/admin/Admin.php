@@ -12,12 +12,14 @@ class Admin extends CI_Controller
 		{
 			redirect('auth/index/admin', 'refresh');
 		}
-		$this->load->model('admin_model');
+		$this->load->model('account_model');
 	}
 
 	public function index()
 	{
-		$this->load->view('admin/admin-index');
+		$data['withdrawals'] = $this->account_model->get_top_withdrawals();
+		$data['withdrawal_sum'] = $this->account_model->get_withdrawal_sum();
+		$this->load->view('admin/admin-index', $data);
 	}
 
 
@@ -26,6 +28,11 @@ class Admin extends CI_Controller
 		$this->load->view('admin/'.$page);
 	}
 
+	public function all_withdrawals()
+	{
+		$data['withdrawals'] = $this->account_model->all_withdrawals();
+		$this->load->view('admin/withdrawal-requests', $data);
+	}
 	public function create()
 	{
 		$this->form_validation->set_error_delimiters('<span class="span span-important">', '</span>');
@@ -118,8 +125,45 @@ class Admin extends CI_Controller
 		}
 	}
 
-	public function get_admin_count()
+	public function change_notifcation()
 	{
-		return $this->admin_model->get_admin_count();
+		$this->admin_model->change_notification();
+		$this->session->set_flashdata('message', 'Notification changed successfully');
+		$this->load->view('admin/admin-notification');
 	}
+
+	public function pay_withdrawal($id = 0)
+	{
+		if ($this->admin_model->pay_withdrawal($id))
+		{
+			$this->session->set_flashdata('message', 'Action Successfully');
+			$this->all_withdrawals();
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
+			$this->all_withdrawals();
+		}
+	}
+
+	public function get_onlineusers()
+	{
+		$data['ousers'] = $this->admin_model->get_ousers();
+		$this->load->view('admin/admin-ousers', $data);
+	}
+
+	public function credit_user()
+	{
+		if ($this->admin_model->credit_user())
+		{
+			$this->session->set_flashdata('message', 'Action Successfully');
+			$this->get_onlineusers();
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
+			$this->get_onlineusers();
+		}
+	}
+
 }

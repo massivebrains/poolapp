@@ -53,6 +53,7 @@
 													<tr>
 														<td>S/NO</td>
 														<td>BRANCH NAME</td>
+														<td>BRANCH ODD TYPE</td>
 														<td>ACTION</td>
 													</tr>
 
@@ -64,37 +65,26 @@
 															<tr>
 																<td><?=$count++; ?></td>
 																<td><?=$row->branch_name; ?></td>
+																<td><?=$row->odd_type; ?></td>
 																<td>
-																	<button href="" class="btn btn-danger btn-sm" id="<?=$row->branch_id ?>" onclick="suspend(<?php echo $row->branch_id ?>)">
+																<?php if($row->branch_status == 'active'){ ?>
+																	<a href="<?=site_url('admin/branch/suspend/'.$row->branch_id) ?>" class="btn btn-danger btn-sm">
 																		<i class="fs-14 pg-close"></i> 
 																		<span class="bold">Suspend</span>
-																	</button>
+																	</a>
+																<?php }else{ ?>
+																<a href="<?=site_url('admin/branch/activate/'.$row->branch_id) ?>" class="btn btn-success btn-sm">
+																		<i class="fs-14 pg-plus"></i> 
+																		<span class="bold">Activate</span>
+																	</a>
+																	<?php } ?>
 																</td>
 															</tr>
 														<?php endforeach; ?>
 													<?php endif; ?>										
 												</tbody>
 											</table>
-											<script>
-													function suspend(id){
-														if(confirm('Are you sure you want to suspend all agents from this branch?'))
-														{
-															var site_url = '<?php echo site_url() ?>';
-															$.post(site_url+'/admin/branch/suspend', {branch_id:id}, function(data)
-															{
-																if(data == 1)
-																{
-																	alert('All agents from this branch are successfully suspended');
-																	$('#'+id).prop('disabled', true);
-																}
-																else
-																{
-																	console.log(data);
-																}
-															});
-														}
-													}
-											</script>
+											
 										</div>
 
 									</div>
@@ -115,7 +105,13 @@
 												'name' => $this->security->get_csrf_token_name(),
 												'hash' => $this->security->get_csrf_hash());
 											 ?>
-											<input type="hidden" ng-model="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+											</div>
+
+											<div class="form-group">
+												<label>Branch Odd Type</label>
+												<span class="help">e.g. 70,30</span>
+												<input type="text" name="odd_type" class="form-control" required />
 											</div>
 
 											<div class="form-group">

@@ -32,6 +32,20 @@ class Auth_model extends CI_Model
             return FALSE;
         }
     }
+
+    public function check_agent_stauts($agent_id)
+    {
+        $query = $this->db->get_where('agents', array('agent_id'=>$agent_id));
+        $row = $query->row();
+        if($row->agent_status == 'inactive')
+        {
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
+    }
     public function ouser_login(){
 		$phone = $this->input->post('ouser_phone');
 		$password = md5($this->input->post('password'));
@@ -63,4 +77,5 @@ class Auth_model extends CI_Model
             return FALSE;
         }
     }
+
 }
