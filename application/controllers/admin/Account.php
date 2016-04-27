@@ -11,7 +11,6 @@ class Account extends CI_Controller
 		{
 			redirect('auth/index/admin', 'refresh');
 		}
-		$this->load->model('account_model');
 	}
 	
 
@@ -22,7 +21,7 @@ class Account extends CI_Controller
 
 	public function get_winners()
 	{
-		$last_week_number = $this->admin_game_model->get_current_week()-1;
+		$last_week_number = $this->admin_game_model->get_current_week() - 1;
 		$data['awinners'] = $this->account_model->get_winners('agent', $last_week_number);
 		$data['owinners'] = $this->account_model->get_winners('ouser', $last_week_number);
 		$this->load->view('admin/admin-sales-winners', $data);

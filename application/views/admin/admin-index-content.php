@@ -179,7 +179,7 @@
 					<h5 class="text-danger no-margin">
 						<strong>Top Withdrawal Requests</strong> <i class="fa fa-arrow-down"></i>
 					</h5>
-					<p class="no-margin">System Date: 31, March 2016</p>
+					<p class="no-margin">System Date: <?=date('F j, Y') ?></p>
 				</div>
 				<h4 class="pull-right semi-bold"><sup>
 					<small class="semi-bold">Total: &#8358;</small>
@@ -203,8 +203,8 @@
 					<tr>
 						<td><?=$row->created; ?></td>
 						<td><?=$this->ouser_model->get_username($row->ouser_id) ?></td>
-						<td>&#8358; demo</td>
-						<td>&#8358; <?=$row->amount ?></td>
+						<td>&#8358;  <?php echo number_format($this->admin_model->ouser_account_balance($row->ouser_id)); ?></td>
+						<td>&#8358; <span class="text-danger"><?=$row->amount ?></span></td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>

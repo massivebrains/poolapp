@@ -32,7 +32,7 @@ class Account_model extends CI_Model
 	public function get_weeks($this_week_number)
 	{
 		$query = $this->db->limit(10);
-		$query = $this->db->order_by('week_number', 'DESC');
+		$query = $this->db->order_by('week_number', 'ASC');
 		$this->db->where('week_number !=', $this_week_number);
 		$query = $this->db->get('week');
 		return $query->result();

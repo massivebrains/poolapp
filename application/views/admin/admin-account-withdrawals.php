@@ -63,7 +63,7 @@
 														<td><?=$row->created ?></td>
 														<td><?=strtoupper($this->ouser_model->get_username($row->ouser_id)) ?></td>
 														<td><?=strtoupper($this->admin_model->get_name($row->admin_id)) ?></td>
-														<td>&#8358; <?=number_format($row->amount); ?></td>
+														<td>&#8358; <span class="text-danger"><?=number_format($row->amount); ?></span></td>
 													</tr>
 													<?php endforeach; ?>										
 												</tbody>

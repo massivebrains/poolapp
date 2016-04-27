@@ -67,12 +67,9 @@
 						</div>
 						<br>
 						<div class="car-highlight2 animated fadeInRightBig notransition">
-							 No minimum 
+							 As low as &#8358; 100
 						</div>
-						<br>
-						<div class="car-highlight3 animated fadeInUpBig notransition">
-							 Amount!
-						</div>
+						
 						<br>
 						<div class="car-highlight5 animated rollIn notransition">
 							 Betting with <span class="font100">Total Control</span><br>

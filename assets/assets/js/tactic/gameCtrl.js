@@ -17,7 +17,7 @@ app.controller("gameCtrl", function($scope, $http)
            $('#'+number).prop('disabled', true);
        }).error(function(data)
        {
-        console.log(data); 
+        //console.log(data); 
     });
 
    }
@@ -39,14 +39,14 @@ app.controller("gameCtrl", function($scope, $http)
         $http.get(site_url+'agent/index/get_total_stake/')
         .then(function successCallback(response) 
         {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.totalStake = response.data;
         }, function errorCallback(response) 
         {
-            console.log(response.data);
+            //console.log(response.data);
         });
 
-    },20000);
+    },10000);
 
     $scope.watch = function()
     {
@@ -62,7 +62,7 @@ app.controller("gameCtrl", function($scope, $http)
             }
         }, function errorCallback(response) 
         {
-            console.log(response.data);
+            //console.log(response.data);
         });
     }
 
@@ -83,14 +83,17 @@ app.controller("gameCtrl", function($scope, $http)
         }
         else
         {
-            $('#submit').addClass('btn-warning');
+            $('#submit').addClass('btn-black');
             if (stake < 100)
             {
-                $('#submit').prop('disabled', true);
+                if($scope.odd = '')
+                {
+                    $('#submit').prop('disabled', true);
+                }
             }
             else
             {
-                $('#submit').removeClass('btn-warning').addClass('btn-success');
+                $('#submit').removeClass('btn-black').addClass('btn-success');
                 $('#submit').prop('disabled', false);
             }
         };
@@ -153,10 +156,10 @@ $scope.selectNumber = function(number)
             console.log($scope.odd);
         }, function errorCallback(response) 
         {
-            console.log(response.data);
-            console.log(game);
-            console.log($scope.stake);
-            console.log($scope.odd);
+            //console.log(response.data);
+            //console.log(game);
+            //console.log($scope.stake);
+            //console.log($scope.odd);
         });
         for (i = 1; i<=49; i++)
         {

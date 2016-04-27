@@ -12,9 +12,9 @@
           Tactic Fixed online Makes it easy to play poll, anywhere, anytime on any device!
         </h2>
         <p class="small">
-          <a href="agent-index.php" title="login">Create </a>an account today or <a href="index.php" title="">Login</a> 
-          if you already have an account with us.<br>
-          © 2013-<?php echo date('Y') ?> TACTIC.
+          <a href="agent-index.php" title="login">Tactic Fixed Limited</a> <a href="#" title="">All rights reserved</a> 
+          <br>
+          © <?php echo date('Y') ?> TACTIC.
         </p>
       </div>
 
@@ -63,14 +63,7 @@
           <input name="submit" class="btn btn-primary btn-cons m-t-10" type="submit" value="Sign in">
         </form>
 
-        <div class="pull-bottom sm-pull-bottom">
-          <div class="m-b-30 p-r-80 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix">
-            
-            <div class="col-sm-9 no-padding m-t-10">
-              <p><small><a href="forgot_password">Forgot Password?</small></p>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </div>
 

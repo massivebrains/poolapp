@@ -166,4 +166,32 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function suspend_ouser($ouser_id = 0)
+	{
+		if ($this->ouser_model->suspend_ouser($ouser_id))
+		{
+			$this->session->set_flashdata('message', 'User Suspended Succefully - Barred from Logging In');
+			$this->get_onlineusers();
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
+			$this->get_onlineusers();
+		}
+	}
+
+	public function activate_ouser($ouser_id = 0)
+	{
+		if ($this->ouser_model->activate_ouser($ouser_id))
+		{
+			$this->session->set_flashdata('message', 'User activated succesfully');
+			$this->get_onlineusers();
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'Oppz! An unexpected error occured.');
+			$this->get_onlineusers();
+		}
+	}
+
 }

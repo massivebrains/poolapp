@@ -66,20 +66,22 @@
 															<td><?=$row->ouser_email ?></td>
 															<td>&#8358; <?php echo number_format($this->admin_model->ouser_account_balance($row->ouser_id)); ?></td>
 															<td>
-																<div class="btn-sm  dropdown"> 
-																	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"> Actions 
-																		<span class="caret"></span>&nbsp;
-																	</a>
-																	<ul class="dropdown-menu">
-																		<li><a href="#">Suspend</a></li>
-																		<li><a href="#">Delete</a></li>
-																	</ul>
-																</div>&nbsp;
+																<?php if($row->status == 'active'){ ?>
+																<a href="<?=site_url('admin/admin/suspend_ouser/'.$row->ouser_id) ?>" class="btn btn-danger btn-sm">
+																	<i class="fs-14 pg-close"></i> 
+																	<span class="bold">Suspend</span>
+																</a>
+																<?php }else{ ?>
+																<a href="<?=site_url('admin/admin/activate_ouser/'.$row->ouser_id) ?>" class="btn btn-success btn-sm">
+																	<i class="fs-14 pg-plus"></i> 
+																	<span class="bold">Activate</span>
+																</a>
+																<?php } ?>
 
 															</td>
 															<td>
 																<form action="<?=site_url('admin/admin/credit_user') ?>" method="post">
-																<input type="number" name="amount" class="form-control" placeholder="000" style="-moz-appearance:textfield" required>
+																	<input type="number" name="amount" class="form-control" placeholder="000" style="-moz-appearance:textfield" required>
 																	<input type="hidden" name="ouser_id" value="<?=$row->ouser_id ?>">
 																	<?php  $csrf = array(
 																		'name' => $this->security->get_csrf_token_name(),

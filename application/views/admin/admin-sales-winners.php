@@ -103,16 +103,16 @@
 
 												</thead>
 												<tbody>
-													<?php for($i = 0; $i<=10; $i++){ ?>
+													<?php foreach($owinners as $row): ?>
 													<tr>
-														<td>Tuesday 12th, July</td>
-														<td><?php echo $i; ?></td>
-														<td>OLAIYA SEGUN</td>
-														<td>4584757</td>
-														<td>&#8358; <?php echo number_format(540); ?></td>
-														<td>&#8358; <?php echo number_format(5600000); ?></td>
+														<td><?=$row->play_time ?></td>
+														<td><?=$row->week_number ?></td>
+														<td><?=$this->ouser_model->get_username($row->player_id) ?></td>
+														<td><?=$row->coupon_code ?></td>
+														<td>&#8358; <?=number_format($row->stake); ?></td>
+														<td>&#8358; <?=number_format($row->win_amount); ?></td>
 													</tr>
-													<?php } ?>										
+													<?php endforeach; ?>										
 												</tbody>
 											</table>
 										</div>

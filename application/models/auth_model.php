@@ -33,7 +33,7 @@ class Auth_model extends CI_Model
         }
     }
 
-    public function check_agent_stauts($agent_id)
+    public function check_agent_status($agent_id)
     {
         $query = $this->db->get_where('agents', array('agent_id'=>$agent_id));
         $row = $query->row();
@@ -46,6 +46,37 @@ class Auth_model extends CI_Model
             return 1;
         }
     }
+
+    public function check_ouser_status($ouser_id)
+    {
+        $query = $this->db->get_where('ousers', array('ouser_id'=>$ouser_id));
+        $row = $query->row();
+        if($row->status == 'inactive')
+        {
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+
+    public function check_agent_branch_status($agent_id)
+    {
+        $query = $this->db->get_where('agents', array('agent_id'=>$agent_id));
+        $row = $query->row();
+        $query = $this->db->get_where('branches', array('branch_id'=>$row->branch_id));
+        $row = $query->row();
+        if($row->branch_status == 'inactive')
+        {
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+
     public function ouser_login(){
 		$phone = $this->input->post('ouser_phone');
 		$password = md5($this->input->post('password'));

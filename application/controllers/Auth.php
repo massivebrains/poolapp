@@ -59,9 +59,13 @@ class Auth extends CI_Controller
 		{
 			if ($user_id = $this->auth_model->agent_login())
 			{
-				if($this->auth_model->check_agent_stauts($user_id) == 0)
+				if($this->auth_model->check_agent_status($user_id) == 0)
 				{
-					$this->session->set_flashdata('message', 'You have been barred from logging In.');
+					$this->session->set_flashdata('message', '<span class="text-danger">You have been barred from logging In.</span>');
+					$this->load->view('auth/agent-login');
+				}
+				else if ($this->auth_model->check_agent_branch_status($user_id) == 0) {
+					$this->session->set_flashdata('message', '<span class="text-danger">Your Branch has been suspended for the mean time. You are not allowed to login.</span>');
 					$this->load->view('auth/agent-login');
 				}
 				else
@@ -126,8 +130,16 @@ class Auth extends CI_Controller
 		{
 			if ($user_id = $this->auth_model->ouser_login())
 			{
-				$this->session->set_userdata('user_id', $user_id);
-				redirect('public/ouser/index', 'refresh');
+				if($this->auth_model->check_ouser_status($user_id) == 0)
+				{
+					$this->session->set_flashdata('message', '<span class="text-danger">You have been barred from logging In.</span>');
+					$this->load->view('public/login');
+				}
+				else
+				{
+					$this->session->set_userdata('user_id', $user_id);
+					redirect('public/ouser/index', 'refresh');
+				}
 			}
 			else
 			{

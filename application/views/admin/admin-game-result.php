@@ -17,7 +17,7 @@
 						<div class="inner">
 
 							<ul class="breadcrumb">
-								<li><p>Dashboard {{2+2}}</p></li>
+								<li><p>Dashboard</p></li>
 								<li><a href="#" class="active">Game</a></li>
 								<li><a href="#" class="active">Result</a></li>
 							</ul>

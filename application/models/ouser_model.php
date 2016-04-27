@@ -148,4 +148,20 @@ class Ouser_model extends CI_Model
 		}
 	}
 
+	public function suspend_ouser($ouser_id = 0)
+    {
+    	$data = array('status'=>'inactive');
+    	$query = $this->db->where('ouser_id', $ouser_id);
+    	$query = $this->db->update('ousers', $data);
+    	return TRUE;
+    }
+
+    public function activate_ouser($ouser_id = 0)
+    {
+    	$data = array('status'=>'active');
+    	$query = $this->db->where('ouser_id', $ouser_id);
+    	$query = $this->db->update('ousers', $data);
+    	return TRUE;
+    }
+
 }
