@@ -16,6 +16,7 @@ class Admin_agent_model extends CI_Model
 			'agent_phone' => $this->input->post('agent_phone'),
 			'agent_address' => $this->input->post('agent_address'),
 			'agent_password' => md5($this->input->post('agent_password')),
+			'branch_id' => $this->input->post('branch_id'),
 			'agent_id' => $this->input->post('agent_id'),
 			'created' => date('Y-m-d H:i:s')
 			);
