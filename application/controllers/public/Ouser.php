@@ -26,7 +26,7 @@ class Ouser extends CI_Controller
 		}
 		else
 		{
-			redirect('public/index');
+			redirect('public/index'); 
 		}
 		
 	}
@@ -121,6 +121,11 @@ class Ouser extends CI_Controller
 		else
 		{
 			//Check if the user has as much as what he/she wants to withdraw
+			if($this->admin_model->ouser_account_balance($this->session->user_id) < (int)$this->input->post('amount'))
+			{
+				$this->session->set_flashdata('message', 'Your cant withdrawal beyond your account balance.');
+				$this->view('withdraw');
+			}
 			if ($this->ouser_model->post_withdrawal())
 			{
 				$this->session->set_flashdata('message', 'Your withdrawal request has been posted succesfully');

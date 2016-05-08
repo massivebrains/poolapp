@@ -48,12 +48,15 @@ class Admin_game_model extends CI_Model
 		echo date('Y-m-d', strtotime($date. ' + 5 days'));
 	}*/
 
-	public function get_current_week($field = 'week_number')
+	public function get_current_week()
 	{
 		$query = $this->db->order_by('week_number', 'DESC');
 		$query = $this->db->limit(1)->get('week');
 		$row = $query->row();
-		return $row->$field;
+		$field = $row->week_number;
+		if(empty($field) || ($field < 1))
+			return 0;
+		return $field;
 	}
 
 	public function read($id = NULL)
@@ -113,6 +116,8 @@ class Admin_game_model extends CI_Model
 		}
 		else
 			$week_number = $this->get_current_week();
+			if($week_number == 0)
+				return 0;
 		{
 			$query = $this->db->get_where('results', array('week_number'=>$week_number));
 			if($query->num_rows() > 0)

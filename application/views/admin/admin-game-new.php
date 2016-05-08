@@ -138,6 +138,7 @@
 														</tr>
 
 													</thead>
+													<?php if($games): ?>
 													<tbody>
 														<?php foreach ($games as $row): ?>
 															<tr>
@@ -153,6 +154,7 @@
 															</tr>
 														<?php endforeach; ?>										
 													</tbody>
+												<?php endif; ?>
 												</table>
 											</div>
 

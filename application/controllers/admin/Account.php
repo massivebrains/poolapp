@@ -30,6 +30,9 @@ class Account extends CI_Controller
 	public function sales_summary()
 	{
 		$weeks = $this->account_model->get_weeks($this->admin_game_model->get_current_week());
+		$count = count($weeks);
+		if($count < 1)
+			redirect(site_url('admin/admin/index'));
 		foreach($weeks as $row)
 		{
 			$agent['data']['week_end'] = $row->week_end_date;

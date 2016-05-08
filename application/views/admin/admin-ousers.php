@@ -35,6 +35,9 @@
 							<li class="active">
 								<a data-toggle="tab" href="#branches"><span>Online Users</span></a>
 							</li>
+							<li>
+								<a data-toggle="tab" href="#settings"><span>Settings</span></a>
+							</li>
 						</ul>
 
 						<div class="tab-content">
@@ -95,6 +98,30 @@
 														<?php endforeach; ?>										
 													</tbody>
 												</table>
+											</div>
+
+										</div>
+									</div>
+									<!-- Veiw Branches Table end -->
+								</div>
+
+								<div class="tab-pane slide-left" id="settings">
+								<!-- View Branches Table start -->
+								<div class="conatiner">
+									<div class="row">
+										<div class="col-lg-12 col-md-12">
+											
+											<div class="clearfix"></div>
+												<form action="<?=site_url('admin/admin/update_odd_type') ?>" method="post">
+													<caption>Set Odd Type <small>(This Will take effect on the next coupon marking actions.)</small> <small class="text-danger">AS LONG AS THE COUPONS ARE NOT MARKED. THIS ODD TYPE CAN BE CHANGED.</small></caption>
+													<input type="number" name="odd_type" class="form-control" placeholder="0"><br>
+													<?php  $csrf = array(
+																		'name' => $this->security->get_csrf_token_name(),
+																		'hash' => $this->security->get_csrf_hash());
+																		?>
+																		<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+													<input type="submit" value="Submit" name="submit" class="btn btn-default">
+												</form>
 											</div>
 
 										</div>

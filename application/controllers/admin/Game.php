@@ -17,7 +17,7 @@ class Game extends CI_Controller
 	
 	public function index()
 	{
-		
+		$data['games'] = '';
 		if ($data['games'] = $this->admin_game_model->read())
 		{
 			$this->load->view('admin/admin-game-new', $data);
@@ -25,7 +25,7 @@ class Game extends CI_Controller
 		else
 		{
 			$this->session->set_flashdata('message', 'No Records Avaliable.');
-			$this->load->view('admin/admin-game-new');
+			$this->load->view('admin/admin-game-new', $data);
 		}
 
 	}

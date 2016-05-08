@@ -22,6 +22,7 @@ class Admin extends CI_Controller
 		$this->load->view('admin/admin-index', $data);
 	}
 
+	
 
 	public function view($page = 'admin-index')
 	{
@@ -194,4 +195,26 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function update_odd_type()
+	{
+		$this->form_validation->set_error_delimiters('<span class="span span-important">', '</span>');
+		$this->form_validation->set_rules('odd_type', 'Odd Type', 'required|numeric');
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->get_onlineusers();
+		}
+		else
+		{
+			if($this->ouser_model->update_odd_type())
+			{
+				$this->session->set_flashdata('message', 'Action Succesful.');
+				$this->get_onlineusers();
+			}
+			else
+			{
+				$this->session->set_flashdata('message', 'An Unexpected Error Occured');
+				$this->get_onlineusers();
+			}
+		}
+	}
 }

@@ -164,4 +164,13 @@ class Ouser_model extends CI_Model
     	return TRUE;
     }
 
+    public function update_odd_type()
+    {
+    	$data = array('odd'=>$this->input->post('odd_type'));
+    	$query = $this->db->where('player', 'ouser');
+    	$query = $this->db->where('status', 'pending');
+    	$query = $this->db->update('coupons', $data);
+    	return TRUE;
+    }
+
 }
