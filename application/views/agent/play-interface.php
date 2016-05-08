@@ -103,8 +103,11 @@
 					</div>
 					<div class="">
 						<label>ODD TYPE:</label>&nbsp;
-						<?=$odd1 ?>&nbsp;<input type="radio" ng-model="odd" value="<?=$odd1 ?>" id="<?=$odd1 ?>">&nbsp;&nbsp;
-						<?=$odd2 ?>&nbsp;<input type="radio" ng-model="odd" value="<?=$odd2 ?>" id="<?=$odd2 ?>">
+						<?php $odd = explode(',', $odds) ?>
+						<?php $count = count($odd); ?>
+						<?php for($i = 0; $i<$count; $i++){ ?>
+						<?=$odd[$i] ?>&nbsp;<input type="radio" ng-model="odd" value="<?=$odd[$i] ?>" id="<?=$odd[$i] ?>">&nbsp;&nbsp;
+						<?php } ?>
 					</div>
 
 					<div class="">

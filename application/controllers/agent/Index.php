@@ -30,10 +30,10 @@ class Index extends CI_Controller
 	public function agent_interface()
 	{
 		$data['notification'] = $this->agent_model->get_notification();
-		$odds = $this->agent_model->get_agent_odds();
-		$odds = explode(',', $odds);
+		$data['odds'] = $this->agent_model->get_agent_odds();
+		/*$odds = explode(',', $odds);
 		$data['odd1'] = $odds[0];
-		$data['odd2'] = $odds[1];
+		$data['odd2'] = $odds[1];*/
 		$this->load->view('agent/agent-index', $data);
 	}
 
